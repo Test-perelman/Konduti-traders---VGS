@@ -1,0 +1,26 @@
+# dependencies
+/konduti-traders/node_modules
+/konduti-traders/.next
+/konduti-traders/out
+/konduti-traders/build
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+/konduti-traders/.env*.local
+
+# vercel
+/konduti-traders/.vercel
+
+# IDEs and OS
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
