@@ -14,7 +14,7 @@ const stats = [
 export default function HeroSection() {
   return (
     <section
-      className="relative w-full min-h-screen overflow-hidden flex items-center justify-center"
+      className="relative w-full min-h-screen overflow-hidden flex items-center justify-center pt-20 lg:pt-24"
       aria-label="Hero section — Farm-to-Business Fresh Produce"
     >
       {/* Background video */}
@@ -59,7 +59,7 @@ export default function HeroSection() {
       <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-cream/15 rounded-full blur-[100px] z-10 pointer-events-none" aria-hidden="true" />
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center px-4 text-center max-w-5xl mx-auto">
+      <div className="relative z-20 flex flex-col items-center justify-center px-4 mt-10 lg:mt-16 text-center max-w-5xl mx-auto">
         {/* Eyebrow with glass pill */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
