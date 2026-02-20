@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 const stats = [
   { value: '20+', label: 'Sourcing Regions' },
@@ -17,9 +17,14 @@ export default function HeroSection() {
       className="relative w-full min-h-screen overflow-hidden flex items-center justify-center pt-20 lg:pt-24"
       aria-label="Hero section — Farm-to-Business Fresh Produce"
     >
-      {/* Background video */}
+      {/* Background video — color wash (B) treatment */}
       <video
-        className="absolute inset-0 w-full h-full object-cover scale-105"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{
+          filter: 'blur(0.3px) contrast(1.05) saturate(0.9) brightness(0.85)',
+          transform: 'scale(1.04)',
+          transformOrigin: 'center center',
+        }}
         src="/animated-video.mp4"
         autoPlay
         loop
@@ -28,35 +33,37 @@ export default function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* Heavy dark overlay for legibility */}
-      <div className="hero-overlay absolute inset-0 z-10" aria-hidden="true" />
-
-      {/* Additional vignette for edges */}
+      {/* B — Teal brand color wash */}
       <div
-        className="absolute inset-0 z-10 pointer-events-none"
+        className="absolute inset-0 z-[5] pointer-events-none"
+        style={{ background: 'rgba(31, 68, 55, 0.52)', mixBlendMode: 'multiply' }}
+        aria-hidden="true"
+      />
+
+      {/* B — Green shimmer at centre to keep vibrancy */}
+      <div
+        className="absolute inset-0 z-[5] pointer-events-none"
         style={{
-          boxShadow: 'inset 0 0 200px 60px rgba(26,46,26,0.5)',
+          background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(95,208,104,0.18) 0%, transparent 70%)',
         }}
         aria-hidden="true"
       />
 
-      {/* Top gradient for navbar readability */}
+      {/* E — Aggressive radial vignette crushing the low-res edges */}
       <div
-        className="absolute top-0 left-0 right-0 h-40 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, rgba(26,46,26,0.7) 0%, transparent 100%)' }}
+        className="absolute inset-0 z-[5] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 65% 60% at 50% 50%, transparent 28%, rgba(10,24,10,0.78) 100%)',
+        }}
         aria-hidden="true"
       />
 
-      {/* Bottom gradient */}
+      {/* E — Extra corner crush via box-shadow */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-48 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, rgba(26,46,26,0.8) 0%, transparent 100%)' }}
+        className="absolute inset-0 z-[5] pointer-events-none"
+        style={{ boxShadow: 'inset 0 0 280px 100px rgba(10,24,10,0.65)' }}
         aria-hidden="true"
       />
-
-      {/* Decorative floating orbs behind text */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-green/20 rounded-full blur-[120px] z-10 pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-cream/15 rounded-full blur-[100px] z-10 pointer-events-none" aria-hidden="true" />
 
       {/* Content */}
       <div className="relative z-20 flex flex-col items-center justify-center px-4 mt-10 lg:mt-16 text-center max-w-5xl mx-auto">
@@ -75,7 +82,7 @@ export default function HeroSection() {
           </span>
         </motion.div>
 
-        {/* Headline — large, bold, ultra-legible */}
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -138,7 +145,6 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
             {stats.map(({ value, label }, index) => (
               <div key={label} className="flex flex-col items-center gap-1.5 relative">
-                {/* Separator for non-first items on desktop */}
                 {index !== 0 && (
                   <span className="hidden sm:block absolute -left-6 top-1/2 -translate-y-1/2 w-px h-8 bg-white/15" aria-hidden="true" />
                 )}

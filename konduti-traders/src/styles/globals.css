@@ -119,6 +119,51 @@ section {
       rgba(26, 46, 26, 0.75) 100%);
 }
 
+/* Video quality enhancement — softens compression artifacts */
+.hero-video {
+  filter: blur(0.6px) contrast(1.1) saturate(1.2) brightness(0.95);
+  transform: scale(1.06);
+  transform-origin: center center;
+}
+
+/* Animated film grain overlay to mask compression noise */
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.045;
+  animation: grain-drift 0.12s steps(1) infinite;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23grain)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+@keyframes grain-drift {
+  0%   { background-position: 0 0; }
+  10%  { background-position: -20px 15px; }
+  20%  { background-position: 40px -10px; }
+  30%  { background-position: -15px 30px; }
+  40%  { background-position: 25px -25px; }
+  50%  { background-position: -35px 5px; }
+  60%  { background-position: 10px 40px; }
+  70%  { background-position: -45px -15px; }
+  80%  { background-position: 30px 20px; }
+  90%  { background-position: -10px -35px; }
+  100% { background-position: 0 0; }
+}
+
+/* Cinematic colour-grade vignette — draws eye inward and hides compression at edges */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%,
+      transparent 40%,
+      rgba(10, 24, 10, 0.55) 100%);
+}
+
 /* Hero text glow effect for legibility */
 .hero-text-glow {
   text-shadow:
