@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageSquare, X } from 'lucide-react'
 import ProductCard from './ProductCard'
 import CategorySidebar from './CategorySidebar'
 import { products } from '@/data/products'
@@ -53,12 +52,24 @@ export default function ProductGrid() {
         {/* Grid */}
         <div className="flex-1">
           {/* Results count */}
-          <div className="flex items-center justify-between mb-6">
-            <p className="font-body text-sm text-gray-text">
+          <div className="flex items-center justify-between mb-6 pb-4 border-b border-stone-lighter">
+            <p className="font-body text-stone" style={{ fontSize: '0.8rem' }}>
               Showing{' '}
               <span className="font-semibold text-dark">{filteredProducts.length}</span>{' '}
               {filteredProducts.length === 1 ? 'product' : 'products'}
             </p>
+            {activeCategory !== 'all' && (
+              <button
+                onClick={() => handleCategoryChange('all')}
+                className="font-body text-stone hover:text-dark transition-colors flex items-center gap-1"
+                style={{ fontSize: '0.75rem' }}
+              >
+                Clear filter
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+              </button>
+            )}
           </div>
 
           <motion.div
@@ -70,9 +81,9 @@ export default function ProductGrid() {
                 <motion.div
                   key={product.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <ProductCard
@@ -86,7 +97,9 @@ export default function ProductGrid() {
 
           {filteredProducts.length === 0 && (
             <div className="text-center py-20">
-              <p className="font-body text-gray-text text-lg">No products found in this category.</p>
+              <p className="font-body text-stone" style={{ fontSize: '0.9rem' }}>
+                No products found in this category.
+              </p>
             </div>
           )}
         </div>
@@ -99,34 +112,38 @@ export default function ProductGrid() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-dark/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-dark/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={e => e.target === e.currentTarget && setQuoteProduct(null)}
             role="dialog"
             aria-modal="true"
             aria-labelledby="quote-modal-title"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              exit={{ opacity: 0, scale: 0.95, y: 16 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white rounded-3xl p-8 max-w-md w-full shadow-green-xl"
+              className="bg-white rounded-2xl p-8 max-w-md w-full shadow-premium-xl"
             >
-              <div className="flex items-start justify-between mb-5">
+              <div className="flex items-start justify-between mb-6">
                 <div>
-                  <h2 id="quote-modal-title" className="font-display font-semibold text-2xl text-dark">
-                    Request Quote
+                  <span className="eyebrow text-green block mb-2">Quick Quote</span>
+                  <h2
+                    id="quote-modal-title"
+                    className="font-display font-light text-dark"
+                    style={{ fontSize: '1.6rem', letterSpacing: '-0.025em', lineHeight: '1.1' }}
+                  >
+                    {quoteProduct.name}
                   </h2>
-                  <p className="font-body text-sm text-gray-text mt-1">
-                    For <span className="font-semibold text-teal">{quoteProduct.name}</span>
-                  </p>
                 </div>
                 <button
                   onClick={() => setQuoteProduct(null)}
-                  className="p-2 rounded-xl hover:bg-mint transition-colors"
+                  className="w-8 h-8 rounded-lg bg-off-white flex items-center justify-center hover:bg-stone-lighter transition-colors shrink-0 ml-4"
                   aria-label="Close quote modal"
                 >
-                  <X size={18} className="text-gray-text" aria-hidden="true" />
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2 2l8 8M10 2l-8 8" stroke="#8a9a88" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
                 </button>
               </div>
 
@@ -139,7 +156,7 @@ export default function ProductGrid() {
                 }}
               >
                 <div>
-                  <label htmlFor="q-name" className="font-body text-xs font-semibold text-teal mb-1.5 block">
+                  <label htmlFor="q-name" className="eyebrow text-teal mb-1.5 block">
                     Your Name *
                   </label>
                   <input
@@ -147,11 +164,12 @@ export default function ProductGrid() {
                     type="text"
                     required
                     placeholder="e.g. Rajesh Menon"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-light focus:border-green focus:ring-1 focus:ring-green outline-none font-body text-sm text-dark bg-white transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-stone-lighter focus:border-green focus:ring-1 focus:ring-green/20 outline-none font-body text-dark bg-white transition-colors"
+                    style={{ fontSize: '0.85rem' }}
                   />
                 </div>
                 <div>
-                  <label htmlFor="q-company" className="font-body text-xs font-semibold text-teal mb-1.5 block">
+                  <label htmlFor="q-company" className="eyebrow text-teal mb-1.5 block">
                     Company *
                   </label>
                   <input
@@ -159,24 +177,26 @@ export default function ProductGrid() {
                     type="text"
                     required
                     placeholder="e.g. FreshMart Pvt. Ltd."
-                    className="w-full px-4 py-3 rounded-xl border border-gray-light focus:border-green focus:ring-1 focus:ring-green outline-none font-body text-sm text-dark bg-white transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-stone-lighter focus:border-green focus:ring-1 focus:ring-green/20 outline-none font-body text-dark bg-white transition-colors"
+                    style={{ fontSize: '0.85rem' }}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="q-volume" className="font-body text-xs font-semibold text-teal mb-1.5 block">
-                      Volume Required *
+                    <label htmlFor="q-volume" className="eyebrow text-teal mb-1.5 block">
+                      Volume *
                     </label>
                     <input
                       id="q-volume"
                       type="text"
                       required
-                      placeholder="e.g. 200 kg/week"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-light focus:border-green focus:ring-1 focus:ring-green outline-none font-body text-sm text-dark bg-white transition-colors"
+                      placeholder="200 kg/week"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-lighter focus:border-green focus:ring-1 focus:ring-green/20 outline-none font-body text-dark bg-white transition-colors"
+                      style={{ fontSize: '0.85rem' }}
                     />
                   </div>
                   <div>
-                    <label htmlFor="q-phone" className="font-body text-xs font-semibold text-teal mb-1.5 block">
+                    <label htmlFor="q-phone" className="eyebrow text-teal mb-1.5 block">
                       Phone *
                     </label>
                     <input
@@ -184,15 +204,19 @@ export default function ProductGrid() {
                       type="tel"
                       required
                       placeholder="+91 98765..."
-                      className="w-full px-4 py-3 rounded-xl border border-gray-light focus:border-green focus:ring-1 focus:ring-green outline-none font-body text-sm text-dark bg-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-lighter focus:border-green focus:ring-1 focus:ring-green/20 outline-none font-body text-dark bg-white transition-colors"
+                      style={{ fontSize: '0.85rem' }}
                     />
                   </div>
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-green text-white font-body font-semibold rounded-xl hover:bg-green-dark transition-colors flex items-center justify-center gap-2 text-sm"
+                  className="w-full py-3.5 bg-green text-white font-body font-semibold rounded-full hover:bg-green-dark transition-colors flex items-center justify-center gap-2 shadow-green-sm hover:shadow-green-md magnetic-btn"
+                  style={{ fontSize: '0.82rem', letterSpacing: '0.02em' }}
                 >
-                  <MessageSquare size={15} aria-hidden="true" />
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M1.5 7h11M8 2.5l5 4.5-5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                   Send Quote Request
                 </button>
               </form>

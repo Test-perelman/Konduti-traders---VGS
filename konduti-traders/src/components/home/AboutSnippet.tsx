@@ -2,160 +2,149 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, MapPin, Truck, ShieldCheck, Thermometer } from 'lucide-react'
-import Container from '@/components/ui/Container'
 
 const pillars = [
   {
-    Icon: MapPin,
-    title: 'Direct Farm Sourcing',
-    description: 'Active partnerships with 500+ farms across 20+ growing regions in India.',
-    accent: 'from-green/20 to-green/5',
-    iconBg: 'bg-green/15',
-    iconColor: 'text-green',
     number: '01',
+    title: 'Direct Farm Sourcing',
+    body: '500+ farms. 20+ regions. No middlemen.',
   },
   {
-    Icon: ShieldCheck,
-    title: 'Quality Inspection',
-    description: 'On-ground QC teams grade every batch at source before dispatch.',
-    accent: 'from-teal/15 to-teal/5',
-    iconBg: 'bg-teal/15',
-    iconColor: 'text-teal',
     number: '02',
+    title: 'Quality Inspection',
+    body: 'On-ground QC teams grade every batch at source.',
   },
   {
-    Icon: Truck,
-    title: 'Pan-India Supply',
-    description: 'Reliable logistics network covering all major metros and Tier 1–2 cities.',
-    accent: 'from-cream/40 to-cream/10',
-    iconBg: 'bg-cream/50',
-    iconColor: 'text-teal-dark',
     number: '03',
+    title: 'Pan-India Supply',
+    body: 'All major metros and Tier 1–2 cities. Covered.',
   },
   {
-    Icon: Thermometer,
-    title: 'Cold Chain',
-    description: 'Temperature-monitored infrastructure from farm to your receiving dock.',
-    accent: 'from-green/20 to-teal/10',
-    iconBg: 'bg-green/15',
-    iconColor: 'text-green',
     number: '04',
+    title: 'Cold Chain',
+    body: 'Temperature-monitored from farm to your dock.',
   },
 ]
 
-const containerVariants = {
+const stagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 }
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+const reveal = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 }
 
 export default function AboutSnippet() {
   return (
-    <section className="py-24 lg:py-32 bg-white relative overflow-hidden" aria-labelledby="about-snippet-heading">
-      {/* Floating orbs */}
-      <div className="floating-orb floating-orb-1" aria-hidden="true" />
-      <div className="floating-orb floating-orb-2" aria-hidden="true" />
+    <section
+      className="py-24 lg:py-32 bg-off-white relative overflow-hidden"
+      aria-labelledby="about-snippet-heading"
+    >
+      {/* Subtle background grid */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" aria-hidden="true" />
 
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" aria-hidden="true" />
+      {/* Ambient light bloom */}
+      <div className="absolute top-1/4 -left-20 w-[500px] h-[400px] bg-green/5 blur-[100px] pointer-events-none" aria-hidden="true" />
 
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
-          {/* Left: Text — takes 5 columns */}
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+
+          {/* Left column — editorial text */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 lg:sticky lg:top-28"
           >
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-5">
-              <span className="h-px w-8 bg-gradient-to-r from-green to-teal" aria-hidden="true" />
-              <span className="font-body text-sm font-semibold tracking-[0.25em] uppercase text-teal">
-                About Us
-              </span>
-            </div>
+            <span className="eyebrow text-green block mb-5">About Konduti</span>
 
             <h2
               id="about-snippet-heading"
-              className="font-display font-bold text-5xl md:text-6xl lg:text-[4rem] text-dark leading-[1.08] tracking-tight mb-7"
+              className="font-display font-light text-dark mb-8"
+              style={{ fontSize: 'clamp(2.4rem, 5vw, 4rem)', lineHeight: '1.05', letterSpacing: '-0.035em' }}
             >
-              Rooted in Farms.
+              Rooted in farms.
               <br />
-              <span className="text-teal">Built for Business.</span>
+              <span className="text-teal">Built for business.</span>
             </h2>
 
-            <div className="space-y-6 text-gray-text font-body text-lg leading-relaxed">
+            <div className="space-y-5 text-gray-text font-body" style={{ fontSize: '0.92rem', lineHeight: '1.85' }}>
               <p>
-                Konduti Traders is a B2B fresh produce procurement and distribution company
-                operating across India. We source directly from farms and Farmer Producer
-                Organisations (FPOs) in India&apos;s key growing regions — cutting out
-                intermediaries to deliver better quality, better pricing, and a more reliable
-                supply to your business.
+                We source directly from farms and Farmer Producer Organisations across
+                India&apos;s key growing regions — cutting out intermediaries to deliver
+                better quality, better pricing, and a more reliable supply.
               </p>
               <p>
-                Every consignment undergoes grading and quality inspection at source, before
-                being dispatched through our cold-chain logistics network. We serve supermarket
-                chains, HoReCa operators, wholesale distributors, cloud kitchen networks, food
-                processors, and organised retail chains across the country.
+                Every consignment is graded and quality-checked at source. Then dispatched
+                through our cold-chain network to your facility — precisely, reliably,
+                every time.
               </p>
-              <p className="text-dark font-medium">
-                Our mission is simple: make India&apos;s fresh produce supply chain more
-                transparent, more reliable, and less wasteful.
+              <p className="font-medium text-dark/80">
+                Our mission: make India&apos;s fresh produce supply chain
+                more transparent, more reliable, and less wasteful.
               </p>
             </div>
 
             <Link
               href="/about"
-              className="group inline-flex items-center gap-2.5 mt-10 font-body text-base font-semibold text-teal hover:text-green transition-colors animated-underline"
+              className="inline-flex items-center gap-2 mt-10 font-body font-semibold text-green hover:text-teal transition-colors group animated-underline"
+              style={{ fontSize: '0.82rem', letterSpacing: '0.03em' }}
             >
-              Learn our full story
-              <ArrowRight
-                size={16}
-                className="transition-transform group-hover:translate-x-1.5"
-                aria-hidden="true"
-              />
+              Read our story
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-1 transition-transform" aria-hidden="true">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </Link>
           </motion.div>
 
-          {/* Right: Pillar Cards — takes 7 columns */}
+          {/* Right column — pillar cards */}
           <motion.div
-            variants={containerVariants}
+            variants={stagger}
             initial="hidden"
-            whileInView="visible"
+            whileInView="show"
             viewport={{ once: true, margin: '-80px' }}
-            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5"
+            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-px bg-stone-lighter/60 rounded-2xl overflow-hidden border border-stone-lighter/60"
           >
-            {pillars.map(({ Icon, title, description, accent, iconBg, iconColor, number }) => (
-              <motion.div key={title} variants={itemVariants}>
-                <div className="gradient-border group relative p-7 rounded-2xl bg-white border border-gray-light/80 hover:border-transparent hover:shadow-green-lg transition-all duration-400 h-full overflow-hidden">
-                  {/* Gradient background on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-2xl`} aria-hidden="true" />
+            {pillars.map(({ number, title, body }) => (
+              <motion.div
+                key={number}
+                variants={reveal}
+                className="group bg-white p-8 hover:bg-mint transition-colors duration-300 relative overflow-hidden"
+              >
+                {/* Large watermark number */}
+                <span
+                  className="absolute -top-3 -right-2 font-display font-light leading-none select-none pointer-events-none section-number"
+                  aria-hidden="true"
+                >
+                  {number}
+                </span>
 
-                  {/* Large step number watermark */}
-                  <span className="absolute -top-2 -right-1 font-display text-[6rem] font-bold text-gray-light/60 select-none leading-none" aria-hidden="true">
-                    {number}
-                  </span>
+                <div className="relative z-10">
+                  <span className="eyebrow text-green/60 block mb-4">{number}</span>
+                  <h3
+                    className="font-display font-medium text-dark mb-3"
+                    style={{ fontSize: '1.35rem', letterSpacing: '-0.02em', lineHeight: '1.15' }}
+                  >
+                    {title}
+                  </h3>
+                  <p className="font-body text-stone" style={{ fontSize: '0.85rem', lineHeight: '1.7' }}>
+                    {body}
+                  </p>
 
-                  <div className="relative z-10">
-                    <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center mb-5 transition-transform group-hover:scale-110 duration-300`}>
-                      <Icon className={`w-5 h-5 ${iconColor}`} aria-hidden="true" />
-                    </div>
-                    <h3 className="font-display font-semibold text-xl text-dark mb-2">{title}</h3>
-                    <p className="font-body text-base text-gray-text leading-relaxed">{description}</p>
-                  </div>
+                  {/* Bottom indicator line */}
+                  <div
+                    className="mt-6 h-px w-0 group-hover:w-full bg-green/25 transition-all duration-600"
+                    aria-hidden="true"
+                  />
                 </div>
               </motion.div>
             ))}
           </motion.div>
+
         </div>
-      </Container>
+      </div>
     </section>
   )
 }

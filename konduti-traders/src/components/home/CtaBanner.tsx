@@ -2,103 +2,93 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, PhoneCall, Sparkles } from 'lucide-react'
-import Container from '@/components/ui/Container'
 
 export default function CtaBanner() {
   return (
-    <section className="py-24 lg:py-32 bg-dark relative overflow-hidden cta-banner" aria-labelledby="cta-heading">
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {/* Large decorative rings */}
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full border border-green/[0.06]" />
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full border border-green/[0.06]" />
+    <section
+      className="py-24 lg:py-36 bg-dark relative overflow-hidden cta-banner grain-overlay"
+      aria-labelledby="cta-heading"
+    >
+      {/* Ambient glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-green/6 blur-[120px] pointer-events-none"
+        aria-hidden="true"
+      />
+      {/* Top hairline */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green/20 to-transparent pointer-events-none"
+        aria-hidden="true"
+      />
+      {/* Fine grid */}
+      <div className="absolute inset-0 bg-fine-grid pointer-events-none" aria-hidden="true" />
 
-        {/* Centered ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] rounded-full bg-green/[0.04] blur-[100px]" />
-
-        {/* Top gradient band */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green/30 to-transparent" />
-
-        {/* Dot pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(95,208,104,0.8) 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
-          }}
-        />
-      </div>
-
-      <Container size="lg">
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center max-w-3xl mx-auto relative z-10"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl"
         >
-          {/* Eyebrow pill */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
-            <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-green/10 border border-green/20 text-sm font-body font-semibold tracking-[0.2em] uppercase text-green mb-8">
-              <Sparkles size={14} aria-hidden="true" />
-              Ready to Source
-            </span>
-          </motion.div>
+          <span className="eyebrow-light block mb-8">Ready to source</span>
 
-          {/* Heading */}
           <h2
             id="cta-heading"
-            className="font-display font-bold text-5xl md:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-6"
+            className="font-display font-light text-white mb-7"
+            style={{ fontSize: 'clamp(2.8rem, 7vw, 6rem)', lineHeight: '0.97', letterSpacing: '-0.04em' }}
           >
-            Start Sourcing
+            Fresh produce.
             <br />
-            <span className="text-green drop-shadow-[0_0_30px_rgba(95,208,104,0.3)]">Fresh Today</span>
+            <span style={{ color: 'rgba(111, 204, 138, 0.85)' }}>Reliably sourced.</span>
+            <br />
+            Start today.
           </h2>
 
-          <p className="font-body text-white/70 text-xl lg:text-2xl mb-12 leading-relaxed max-w-2xl mx-auto">
+          <p
+            className="font-body text-white/40 mb-12 max-w-lg"
+            style={{ fontSize: '0.92rem', lineHeight: '1.8' }}
+          >
             Join 100+ businesses across India who rely on Konduti Traders for
-            consistent, quality fresh produce supply.
+            consistent, quality fresh produce — delivered to spec, every time.
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start gap-3.5 mb-14">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-2.5 bg-green text-white font-body font-semibold px-10 py-5 rounded-full hover:bg-green-dark transition-all duration-300 shadow-[0_0_30px_rgba(95,208,104,0.25)] hover:shadow-[0_0_50px_rgba(95,208,104,0.4)] text-lg"
+              className="inline-flex items-center gap-2.5 bg-green text-white font-body font-semibold px-8 py-4 rounded-full hover:bg-green-light transition-colors shadow-green-glow hover:shadow-green-lg magnetic-btn"
+              style={{ fontSize: '0.85rem', letterSpacing: '0.02em' }}
             >
               Become a Buyer
-              <ArrowRight
-                size={18}
-                className="transition-transform group-hover:translate-x-1"
-                aria-hidden="true"
-              />
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </Link>
             <a
               href="tel:+919876543210"
-              className="inline-flex items-center gap-2.5 bg-white/[0.06] text-white font-body font-semibold px-10 py-5 rounded-full border border-white/15 hover:bg-white/[0.12] hover:border-white/30 transition-all duration-300 backdrop-blur-sm text-lg"
+              className="inline-flex items-center gap-2.5 bg-white/6 text-white font-body font-medium px-8 py-4 rounded-full border border-white/12 hover:bg-white/10 hover:border-white/22 transition-all duration-300 backdrop-blur-sm"
+              style={{ fontSize: '0.85rem', letterSpacing: '0.02em' }}
             >
-              <PhoneCall size={18} aria-hidden="true" />
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="opacity-60" aria-hidden="true">
+                <path d="M2 2.5A1.5 1.5 0 013.5 1h1a1.5 1.5 0 011.5 1.5v1a1.5 1.5 0 01-1.5 1.5H4A1.5 1.5 0 002 3.5v-1zM10 2.5A1.5 1.5 0 0111.5 1h1A1.5 1.5 0 0114 2.5v1A1.5 1.5 0 0112.5 5h-1A1.5 1.5 0 0110 3.5v-1z" fill="currentColor" opacity="0.4"/>
+                <path d="M2 2c0 6.627 5.373 12 12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
               Call Now
             </a>
           </div>
 
-          {/* Trust badges */}
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            {['GST Registered', 'APMC Certified', 'Cold Chain Compliant'].map((badge) => (
-              <span key={badge} className="inline-flex items-center gap-2 font-body text-sm text-white/40 tracking-wide">
-                <span className="w-1.5 h-1.5 rounded-full bg-green/50" aria-hidden="true" />
-                {badge}
-              </span>
+          {/* Trust row */}
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
+            {['GST Registered', 'APMC Certified', 'Cold Chain Compliant', 'ISO Quality Standards'].map((badge) => (
+              <div key={badge} className="flex items-center gap-2">
+                <span className="w-1 h-1 rounded-full bg-green/40" aria-hidden="true" />
+                <span className="font-body text-white/30" style={{ fontSize: '0.72rem', letterSpacing: '0.04em' }}>
+                  {badge}
+                </span>
+              </div>
             ))}
           </div>
         </motion.div>
-      </Container>
+      </div>
     </section>
   )
 }

@@ -3,7 +3,6 @@
 import { productCategories } from '@/data/products'
 import type { ProductCategory } from '@/types'
 import { cn } from '@/lib/utils'
-import { Filter } from 'lucide-react'
 
 interface CategorySidebarProps {
   activeCategory: ProductCategory
@@ -12,13 +11,10 @@ interface CategorySidebarProps {
 
 export default function CategorySidebar({ activeCategory, onCategoryChange }: CategorySidebarProps) {
   return (
-    <aside aria-label="Product category filter" className="w-full lg:w-56 shrink-0">
-      <div className="bg-white rounded-2xl border border-gray-light p-5 sticky top-24">
-        <div className="flex items-center gap-2 mb-5">
-          <Filter size={15} className="text-teal" aria-hidden="true" />
-          <h2 className="font-body text-xs font-semibold tracking-[0.15em] uppercase text-teal">
-            Filter by Category
-          </h2>
+    <aside aria-label="Product category filter" className="w-full lg:w-52 shrink-0">
+      <div className="bg-white rounded-2xl border border-stone-lighter p-5 sticky top-24 shadow-premium-sm">
+        <div className="mb-5 pb-4 border-b border-stone-lighter">
+          <p className="eyebrow text-stone">Filter by Category</p>
         </div>
 
         <ul className="flex flex-col gap-1" role="list">
@@ -28,19 +24,22 @@ export default function CategorySidebar({ activeCategory, onCategoryChange }: Ca
                 onClick={() => onCategoryChange(cat.id as ProductCategory)}
                 aria-pressed={activeCategory === cat.id}
                 className={cn(
-                  'w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-body transition-all duration-200',
+                  'w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-body transition-all duration-200',
                   activeCategory === cat.id
-                    ? 'bg-teal text-white font-semibold'
-                    : 'text-gray-text hover:bg-mint hover:text-teal'
+                    ? 'bg-teal text-white'
+                    : 'text-stone hover:bg-off-white hover:text-dark'
                 )}
+                style={{ fontSize: '0.8rem' }}
               >
-                <span>{cat.label}</span>
+                <span className={cn('font-medium', activeCategory === cat.id ? 'text-white' : 'text-dark')}>
+                  {cat.label}
+                </span>
                 <span
                   className={cn(
-                    'text-xs font-semibold px-2 py-0.5 rounded-full',
+                    'text-xs px-2 py-0.5 rounded-full font-semibold',
                     activeCategory === cat.id
                       ? 'bg-white/20 text-white'
-                      : 'bg-gray-light text-gray-text'
+                      : 'bg-stone-lighter text-stone'
                   )}
                 >
                   {cat.count}

@@ -1,39 +1,40 @@
 'use client'
 
-import { Leaf, Award, Thermometer, Shield, Truck, Clock } from 'lucide-react'
-
-const trustItems = [
-    { icon: Leaf, text: 'Direct Farm Sourcing' },
-    { icon: Award, text: 'Quality Graded Produce' },
-    { icon: Thermometer, text: 'Cold Chain Compliant' },
-    { icon: Shield, text: 'APMC Certified' },
-    { icon: Truck, text: 'Pan-India Delivery' },
-    { icon: Clock, text: '48-Hour Delivery Window' },
-    { icon: Leaf, text: 'Direct Farm Sourcing' },
-    { icon: Award, text: 'Quality Graded Produce' },
-    { icon: Thermometer, text: 'Cold Chain Compliant' },
-    { icon: Shield, text: 'APMC Certified' },
-    { icon: Truck, text: 'Pan-India Delivery' },
-    { icon: Clock, text: '48-Hour Delivery Window' },
+const items = [
+  'Direct Farm Sourcing',
+  '500+ Farm Partners',
+  'Quality Graded Produce',
+  'Cold Chain Compliant',
+  'APMC Certified',
+  'Pan-India Delivery',
+  '48-Hour Window',
+  '20+ Sourcing Regions',
+  'GST Registered',
+  'No Intermediaries',
 ]
 
+// Doubled for seamless loop
+const tickerItems = [...items, ...items]
+
 export default function TrustTicker() {
-    return (
-        <section className="py-7 bg-dark border-y border-green/10 overflow-hidden" aria-label="Trust indicators">
-            <div className="ticker-wrap">
-                <div className="ticker-inner">
-                    {trustItems.map(({ icon: Icon, text }, i) => (
-                        <span
-                            key={i}
-                            className="inline-flex items-center gap-3 px-10 font-body text-base font-semibold text-white/70 tracking-wide"
-                        >
-                            <Icon className="w-5 h-5 text-green/70 shrink-0" aria-hidden="true" />
-                            {text}
-                            <span className="text-green/30 mx-6" aria-hidden="true">✦</span>
-                        </span>
-                    ))}
-                </div>
-            </div>
-        </section>
-    )
+  return (
+    <section
+      className="py-5 bg-teal-dark border-y border-white/5 overflow-hidden"
+      aria-label="Trust indicators"
+    >
+      <div className="ticker-wrap">
+        <div className="ticker-inner">
+          {tickerItems.map((text, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-5 px-7 font-body text-[0.72rem] font-semibold tracking-[0.15em] uppercase text-white/45"
+            >
+              {text}
+              <span className="text-green/40 text-[0.5rem]" aria-hidden="true">◆</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }

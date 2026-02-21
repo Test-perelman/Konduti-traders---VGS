@@ -1,8 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Calendar, Package, ArrowRight } from 'lucide-react'
-import Badge from '@/components/ui/Badge'
+import { Package } from 'lucide-react'
 import type { IProduct } from '@/types'
 
 interface ProductCardProps {
@@ -13,11 +12,11 @@ interface ProductCardProps {
 export default function ProductCard({ product, onRequestQuote }: ProductCardProps) {
   return (
     <article
-      className="group bg-white rounded-2xl overflow-hidden border border-gray-light shadow-green-sm hover:shadow-green-md card-hover flex flex-col"
+      className="group bg-white rounded-xl overflow-hidden border border-stone-lighter shadow-premium-sm hover:shadow-premium-md card-hover-subtle flex flex-col"
       aria-label={product.name}
     >
       {/* Image */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-44 overflow-hidden">
         <Image
           src={product.image}
           alt={`${product.name} — ${product.description.slice(0, 80)}`}
@@ -26,35 +25,43 @@ export default function ProductCard({ product, onRequestQuote }: ProductCardProp
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           loading="lazy"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/20 to-transparent" aria-hidden="true" />
         {/* Availability badge */}
         <div className="absolute top-3 right-3">
-          <Badge variant={product.availability === 'year-round' ? 'green' : 'cream'}>
+          <span
+            className={`font-body font-semibold tracking-[0.12em] uppercase px-2.5 py-1 rounded-full text-[0.6rem] backdrop-blur-sm border ${
+              product.availability === 'year-round'
+                ? 'bg-green/15 text-green border-green/20 text-white/90'
+                : 'bg-cream/20 text-white border-cream/25'
+            }`}
+          >
             {product.availability === 'year-round' ? 'Year-round' : 'Seasonal'}
-          </Badge>
+          </span>
         </div>
       </div>
 
       {/* Content */}
       <div className="p-5 flex flex-col flex-1">
-        <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="font-display font-semibold text-xl text-dark leading-tight">
-            {product.name}
-          </h3>
-        </div>
+        <h3
+          className="font-display font-medium text-dark mb-2 leading-tight"
+          style={{ fontSize: '1.1rem', letterSpacing: '-0.018em' }}
+        >
+          {product.name}
+        </h3>
 
-        <p className="font-body text-sm text-gray-text leading-relaxed mb-4 flex-1 line-clamp-3">
+        <p className="font-body text-stone flex-1 line-clamp-2 mb-4" style={{ fontSize: '0.78rem', lineHeight: '1.7' }}>
           {product.description}
         </p>
 
         {/* Meta */}
-        <div className="flex flex-col gap-1.5 mb-4">
-          <div className="flex items-center gap-2 text-xs font-body text-gray-text">
-            <Package size={13} className="text-teal" aria-hidden="true" />
+        <div className="flex flex-col gap-1 mb-4">
+          <div className="flex items-center gap-2 font-body text-stone" style={{ fontSize: '0.72rem' }}>
+            <Package className="w-3 h-3 text-teal" aria-hidden="true" />
             <span>Min. order: {product.minOrder || '50 kg'}</span>
           </div>
           {product.season && (
-            <div className="flex items-center gap-2 text-xs font-body text-gray-text">
-              <Calendar size={13} className="text-teal" aria-hidden="true" />
+            <div className="flex items-center gap-2 font-body text-stone" style={{ fontSize: '0.72rem' }}>
+              <span className="w-3 h-3 flex items-center justify-center" aria-hidden="true">📅</span>
               <span>Season: {product.season}</span>
             </div>
           )}
@@ -63,10 +70,11 @@ export default function ProductCard({ product, onRequestQuote }: ProductCardProp
         {/* Tags */}
         {product.tags && product.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-4">
-            {product.tags.map(tag => (
+            {product.tags.slice(0, 3).map(tag => (
               <span
                 key={tag}
-                className="px-2.5 py-1 rounded-full bg-mint text-teal text-xs font-body font-medium"
+                className="px-2 py-0.5 rounded-full bg-mint font-body text-teal"
+                style={{ fontSize: '0.65rem', fontWeight: 500 }}
               >
                 {tag}
               </span>
@@ -77,11 +85,14 @@ export default function ProductCard({ product, onRequestQuote }: ProductCardProp
         {/* CTA */}
         <button
           onClick={() => onRequestQuote?.(product)}
-          className="group/btn flex items-center justify-center gap-2 w-full py-3 bg-teal/8 text-teal border border-teal/20 rounded-xl font-body font-semibold text-sm hover:bg-teal hover:text-white hover:border-teal transition-all duration-200 mt-auto"
+          className="mt-auto flex items-center justify-center gap-2 w-full py-2.5 bg-green/7 text-green border border-green/15 rounded-lg font-body font-semibold hover:bg-green hover:text-white hover:border-green transition-all duration-250 magnetic-btn"
+          style={{ fontSize: '0.77rem', letterSpacing: '0.02em' }}
           aria-label={`Request a quote for ${product.name}`}
         >
           Request Quote
-          <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-0.5" aria-hidden="true" />
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2.5 6h7M7 3.5L9.5 6 7 8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
       </div>
     </article>

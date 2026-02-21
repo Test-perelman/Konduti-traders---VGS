@@ -2,26 +2,37 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
 
 const stats = [
-  { value: '20+', label: 'Sourcing Regions' },
-  { value: '500+', label: 'Farm Partners' },
-  { value: '48hr', label: 'Delivery Window' },
-  { value: '6+', label: 'Product Categories' },
+  { value: '20+', label: 'Sourcing regions' },
+  { value: '500+', label: 'Farm partners' },
+  { value: '48hr', label: 'Delivery window' },
+  { value: '6+', label: 'Product categories' },
 ]
+
+// Stagger config
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+  },
+}
+const item = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
+}
 
 export default function HeroSection() {
   return (
     <section
-      className="relative w-full min-h-screen overflow-hidden flex items-center justify-center pt-20 lg:pt-24"
-      aria-label="Hero section — Farm-to-Business Fresh Produce"
+      className="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center"
+      aria-label="Konduti Traders — Farm-to-Business Fresh Produce"
     >
-      {/* Background video — color wash (B) treatment */}
+      {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
         style={{
-          filter: 'blur(0.3px) contrast(1.05) saturate(0.9) brightness(0.85)',
+          filter: 'blur(0.3px) contrast(1.05) saturate(0.85) brightness(0.8)',
           transform: 'scale(1.04)',
           transformOrigin: 'center center',
         }}
@@ -33,151 +44,157 @@ export default function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* B — Teal brand color wash */}
+      {/* Colour Wash — Deep teal multiply */}
       <div
-        className="absolute inset-0 z-[5] pointer-events-none"
-        style={{ background: 'rgba(31, 68, 55, 0.52)', mixBlendMode: 'multiply' }}
+        className="absolute inset-0 z-[2] pointer-events-none"
+        style={{ background: 'rgba(20, 50, 38, 0.58)', mixBlendMode: 'multiply' }}
         aria-hidden="true"
       />
 
-      {/* B — Green shimmer at centre to keep vibrancy */}
+      {/* Radial centre glow — keeps vibrancy */}
       <div
-        className="absolute inset-0 z-[5] pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(95,208,104,0.18) 0%, transparent 70%)',
-        }}
+        className="absolute inset-0 z-[3] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 55% 55% at 50% 48%, rgba(61,139,94,0.2) 0%, transparent 70%)' }}
         aria-hidden="true"
       />
 
-      {/* E — Aggressive radial vignette crushing the low-res edges */}
+      {/* Edge vignette */}
       <div
-        className="absolute inset-0 z-[5] pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 65% 60% at 50% 50%, transparent 28%, rgba(10,24,10,0.78) 100%)',
-        }}
+        className="absolute inset-0 z-[4] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 70% 65% at 50% 50%, transparent 30%, rgba(8,20,12,0.82) 100%)' }}
         aria-hidden="true"
       />
 
-      {/* E — Extra corner crush via box-shadow */}
+      {/* Corner crush */}
       <div
-        className="absolute inset-0 z-[5] pointer-events-none"
-        style={{ boxShadow: 'inset 0 0 280px 100px rgba(10,24,10,0.65)' }}
+        className="absolute inset-0 z-[4] pointer-events-none"
+        style={{ boxShadow: 'inset 0 0 300px 80px rgba(8,20,12,0.7)' }}
         aria-hidden="true"
       />
 
-      {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center px-4 mt-10 lg:mt-16 text-center max-w-5xl mx-auto">
-        {/* Eyebrow with glass pill */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8"
-        >
-          <span className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-lg">
-            <span className="w-2 h-2 rounded-full bg-green animate-pulse" aria-hidden="true" />
-            <span className="font-body text-sm font-semibold tracking-[0.2em] uppercase text-white/95">
-              India&apos;s Premier B2B Fresh Produce Partner
+      {/* Animated grain */}
+      <div className="hero-grain" aria-hidden="true" />
+
+      {/* ─── HERO CONTENT ─── */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-20 flex flex-col items-center text-center px-6 max-w-[1000px] mx-auto pt-28 pb-32"
+      >
+
+        {/* Eyebrow */}
+        <motion.div variants={item} className="mb-10">
+          <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/8 backdrop-blur-md border border-white/12">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-light animate-pulse" aria-hidden="true" />
+            <span className="font-body text-[0.68rem] font-semibold tracking-[0.22em] uppercase text-white/70">
+              India&apos;s B2B Fresh Produce Partner
             </span>
           </span>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline — editorial, rhythmic */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="hero-text-glow font-display font-bold text-white leading-[1.05] tracking-tight max-w-4xl mb-6"
-          style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)' }}
+          variants={item}
+          className="font-display font-light text-white hero-text-glow max-w-[900px]"
+          style={{
+            fontSize: 'clamp(3.2rem, 8.5vw, 7.2rem)',
+            lineHeight: '0.96',
+            letterSpacing: '-0.04em',
+          }}
         >
-          Farm-to-Business
+          Farm-fresh.
           <br />
-          <span className="text-green drop-shadow-[0_0_30px_rgba(95,208,104,0.4)]">
-            Fresh Produce
-          </span>
+          <em className="not-italic" style={{ color: '#6fcc8a' }}>
+            Precision-supplied.
+          </em>
           <br />
-          Across India
+          Pan-India.
         </motion.h1>
 
-        {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="hero-subtext-glow font-body text-white/95 text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed font-medium"
-        >
-          Direct sourcing.&nbsp; Quality control.&nbsp; Reliable delivery.
-        </motion.p>
+        {/* Sub-manifesto — short sharp lines */}
+        <motion.div variants={item} className="mt-10 mb-12">
+          <p
+            className="hero-subtext-glow font-body text-white/65 text-center"
+            style={{ fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', letterSpacing: '0.04em', lineHeight: '2' }}
+          >
+            Direct from farms.&ensp;·&ensp;No intermediaries.&ensp;·&ensp;No margin leakage.
+          </p>
+        </motion.div>
 
         {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col sm:flex-row items-center gap-4"
-        >
+        <motion.div variants={item} className="flex flex-col sm:flex-row items-center gap-3.5">
           <Link
             href="/contact"
-            className="group relative inline-flex items-center gap-2 bg-green text-white font-body font-semibold px-10 py-5 rounded-full hover:bg-green-dark transition-all duration-300 shadow-[0_0_30px_rgba(95,208,104,0.3)] hover:shadow-[0_0_50px_rgba(95,208,104,0.5)] text-base md:text-lg"
+            className="group inline-flex items-center gap-2.5 bg-green text-white font-body font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_40px_rgba(61,139,94,0.35)] hover:shadow-[0_0_60px_rgba(61,139,94,0.55)] hover:bg-green-light magnetic-btn"
+            style={{ fontSize: '0.85rem', letterSpacing: '0.02em' }}
           >
-            <span className="relative z-10">Become a Buyer</span>
-            <ArrowRight
-              size={18}
-              className="relative z-10 transition-transform group-hover:translate-x-1"
-              aria-hidden="true"
-            />
+            Start Sourcing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform">
+              <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </Link>
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 bg-white/10 text-white font-body font-semibold px-10 py-5 rounded-full border border-white/25 hover:bg-white/20 hover:border-white/50 transition-all duration-300 backdrop-blur-md text-base md:text-lg"
+            className="inline-flex items-center gap-2 bg-white/8 text-white font-body font-medium px-8 py-4 rounded-full border border-white/18 hover:bg-white/14 hover:border-white/30 transition-all duration-300 backdrop-blur-sm"
+            style={{ fontSize: '0.85rem', letterSpacing: '0.02em' }}
           >
             Explore Products
           </Link>
         </motion.div>
 
-        {/* Stats row — glass card */}
+        {/* Stats — minimal horizontal row */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-16 px-8 py-6 rounded-2xl bg-white/8 backdrop-blur-lg border border-white/10"
+          variants={item}
+          className="mt-20 pt-8 border-t border-white/8 w-full flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-0"
         >
-          <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
-            {stats.map(({ value, label }, index) => (
-              <div key={label} className="flex flex-col items-center gap-1.5 relative">
-                {index !== 0 && (
-                  <span className="hidden sm:block absolute -left-6 top-1/2 -translate-y-1/2 w-px h-8 bg-white/15" aria-hidden="true" />
-                )}
-                <span className="stat-number text-4xl md:text-5xl text-cream drop-shadow-[0_0_12px_rgba(245,223,153,0.3)]">
-                  {value}
-                </span>
-                <span className="font-body text-xs font-semibold tracking-[0.15em] uppercase text-white/70">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div>
+          {stats.map(({ value, label }, i) => (
+            <div
+              key={label}
+              className="relative flex flex-col items-center gap-1.5 sm:px-10"
+            >
+              {i !== 0 && (
+                <span
+                  className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 w-px h-6 bg-white/10"
+                  aria-hidden="true"
+                />
+              )}
+              <span
+                className="font-display font-medium text-cream"
+                style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1, letterSpacing: '-0.04em' }}
+              >
+                {value}
+              </span>
+              <span className="font-body text-white/45" style={{ fontSize: '0.65rem', letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+                {label}
+              </span>
+            </div>
+          ))}
         </motion.div>
-      </div>
+
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+        transition={{ delay: 1.6, duration: 0.8 }}
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
         aria-hidden="true"
       >
-        <span className="font-body text-xs tracking-[0.25em] uppercase text-white/60 font-medium">
-          Scroll to explore
-        </span>
-        <div className="w-5 h-8 rounded-full border border-white/30 flex items-start justify-center p-1">
+        <div className="w-px h-10 bg-gradient-to-b from-transparent via-white/25 to-white/50 relative overflow-hidden">
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-1 h-2 rounded-full bg-white/70"
+            animate={{ y: ['0%', '100%'] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute inset-x-0 top-0 h-1/2 bg-white/70"
           />
         </div>
+        <span
+          className="font-body text-white/35 tracking-[0.2em] uppercase"
+          style={{ fontSize: '0.6rem' }}
+        >
+          Scroll
+        </span>
       </motion.div>
     </section>
   )

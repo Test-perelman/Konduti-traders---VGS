@@ -2,154 +2,136 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ShoppingCart, UtensilsCrossed, Warehouse, ChefHat, Factory, Store, ArrowRight, ArrowUpRight } from 'lucide-react'
-import Container from '@/components/ui/Container'
-import SectionHeader from '@/components/ui/SectionHeader'
 
 const segments = [
   {
-    Icon: ShoppingCart,
     title: 'Supermarket Chains',
-    description: 'Retail-ready graded produce with consistent sizing and shelf life for modern trade.',
+    body: 'Retail-ready graded produce. Consistent sizing. Extended shelf life. Serve modern trade at scale.',
     href: '/industries#supermarkets',
-    iconBg: 'bg-green/10',
-    iconColor: 'text-green',
-    hoverBorder: 'group-hover:border-green/30',
-    hoverGlow: 'group-hover:shadow-[0_0_40px_rgba(95,208,104,0.08)]',
+    accent: 'green',
   },
   {
-    Icon: UtensilsCrossed,
     title: 'HoReCa',
-    description: 'Precision kitchen-grade produce for hotels, restaurants, and catering operations.',
+    body: 'Kitchen-grade precision. Hotels, restaurants, catering — every portion spec met.',
     href: '/industries#horeca',
-    iconBg: 'bg-teal/10',
-    iconColor: 'text-teal',
-    hoverBorder: 'group-hover:border-teal/30',
-    hoverGlow: 'group-hover:shadow-[0_0_40px_rgba(75,134,115,0.08)]',
+    accent: 'teal',
   },
   {
-    Icon: Warehouse,
     title: 'Wholesalers',
-    description: 'High-volume, mandi-direct pricing with documentation and bulk logistics support.',
+    body: 'High-volume. Mandi-direct pricing. Full documentation. Bulk logistics support.',
     href: '/industries#wholesalers',
-    iconBg: 'bg-cream/50',
-    iconColor: 'text-teal-dark',
-    hoverBorder: 'group-hover:border-cream/60',
-    hoverGlow: 'group-hover:shadow-[0_0_40px_rgba(245,223,153,0.1)]',
+    accent: 'cream',
   },
   {
-    Icon: ChefHat,
     title: 'Cloud Kitchens',
-    description: 'Daily fresh delivery calibrated to kitchen workflow and portion requirements.',
+    body: 'Daily fresh delivery. Calibrated to kitchen workflow and portion requirements.',
     href: '/industries#cloud-kitchens',
-    iconBg: 'bg-green/10',
-    iconColor: 'text-green',
-    hoverBorder: 'group-hover:border-green/30',
-    hoverGlow: 'group-hover:shadow-[0_0_40px_rgba(95,208,104,0.08)]',
+    accent: 'green',
   },
   {
-    Icon: Factory,
     title: 'Food Processors',
-    description: 'Technical-grade bulk supply with assured volumes and processing specifications.',
+    body: 'Technical-grade bulk. Assured volumes. Processing specifications guaranteed.',
     href: '/industries#food-processors',
-    iconBg: 'bg-teal/10',
-    iconColor: 'text-teal',
-    hoverBorder: 'group-hover:border-teal/30',
-    hoverGlow: 'group-hover:shadow-[0_0_40px_rgba(75,134,115,0.08)]',
+    accent: 'teal',
   },
   {
-    Icon: Store,
     title: 'Retail Chains',
-    description: 'Organised supply for kirana chains competing on produce freshness and quality.',
+    body: 'Organised supply for kiranas competing on produce freshness and quality.',
     href: '/industries#retail-chains',
-    iconBg: 'bg-cream/50',
-    iconColor: 'text-teal-dark',
-    hoverBorder: 'group-hover:border-cream/60',
-    hoverGlow: 'group-hover:shadow-[0_0_40px_rgba(245,223,153,0.1)]',
+    accent: 'cream',
   },
 ]
 
-const containerVariants = {
+const stagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.08 } },
 }
-
-const itemVariants = {
+const fadeUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 }
 
 export default function WhoWeServe() {
   return (
-    <section className="py-24 lg:py-32 bg-mint relative overflow-hidden" aria-labelledby="serve-heading">
-      {/* Floating decorative circle */}
-      <div className="absolute -top-20 right-20 w-64 h-64 rounded-full border border-teal/5 pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-10 -left-10 w-40 h-40 rounded-full border border-green/8 pointer-events-none" aria-hidden="true" />
+    <section
+      className="py-24 lg:py-32 bg-mint relative overflow-hidden"
+      aria-labelledby="serve-heading"
+    >
+      {/* Ambient glow */}
+      <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-teal/5 blur-[100px] pointer-events-none" aria-hidden="true" />
 
-      <Container>
-        <SectionHeader
-          eyebrow="Industries"
-          heading="Who We Supply To"
-          subheading="Konduti Traders serves India's most demanding B2B food businesses across six verticals."
-          id="serve-heading"
-        />
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
 
+        {/* Header */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-14"
         >
-          {segments.map(({ Icon, title, description, href, iconBg, iconColor, hoverBorder, hoverGlow }) => (
-            <motion.div key={title} variants={itemVariants}>
+          <span className="eyebrow text-green block mb-4">Industries</span>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <h2
+              id="serve-heading"
+              className="font-display font-light text-dark max-w-xl"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
+            >
+              Who we supply to.
+            </h2>
+            <Link
+              href="/industries"
+              className="font-body text-[0.8rem] font-semibold text-green hover:text-teal transition-colors animated-underline self-start lg:self-end mb-1"
+            >
+              View all industry solutions →
+            </Link>
+          </div>
+        </motion.div>
+
+        {/* Grid */}
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-lighter/50 rounded-2xl overflow-hidden border border-stone-lighter/50"
+        >
+          {segments.map(({ title, body, href }) => (
+            <motion.div key={title} variants={fadeUp}>
               <Link
                 href={href}
-                className={`group flex flex-col gap-5 p-8 rounded-2xl bg-white border border-gray-light/70 transition-all duration-400 h-full ${hoverBorder} ${hoverGlow}`}
-                aria-label={`Learn about serving ${title}`}
+                className="group flex flex-col h-full p-8 bg-white hover:bg-mint transition-colors duration-300 relative overflow-hidden"
+                aria-label={`Learn about ${title} solutions`}
               >
-                {/* Icon with subtle ring */}
-                <div className="relative">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${iconBg} transition-transform group-hover:scale-110 duration-300`}>
-                    <Icon className={`w-6 h-6 ${iconColor}`} aria-hidden="true" />
-                  </div>
-                </div>
+                <h3
+                  className="font-display font-medium text-dark mb-3 group-hover:text-teal transition-colors duration-300"
+                  style={{ fontSize: '1.25rem', letterSpacing: '-0.02em', lineHeight: '1.15' }}
+                >
+                  {title}
+                </h3>
+                <p className="font-body text-stone flex-1" style={{ fontSize: '0.83rem', lineHeight: '1.75' }}>
+                  {body}
+                </p>
 
-                <div className="flex-1">
-                  <h3 className="font-display font-bold text-2xl text-dark mb-2 group-hover:text-teal transition-colors duration-300">{title}</h3>
-                  <p className="font-body text-base text-gray-text leading-relaxed">{description}</p>
-                </div>
-
-                {/* Bottom link indicator */}
-                <div className="flex items-center justify-between">
-                  <span className="font-body text-sm font-semibold text-teal group-hover:text-green transition-colors duration-300">
+                <div className="flex items-center justify-between mt-6">
+                  <span className="font-body text-[0.72rem] font-semibold text-green group-hover:text-teal transition-colors tracking-[0.05em]">
                     Learn more
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-mint flex items-center justify-center group-hover:bg-green/10 transition-all duration-300">
-                    <ArrowUpRight size={14} className="text-teal group-hover:text-green transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                  <div className="w-7 h-7 rounded-full bg-mint group-hover:bg-green/10 flex items-center justify-center transition-colors">
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" className="text-teal group-hover:text-green transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+                      <path d="M1.5 9.5L9 2M9 2H4M9 2v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
                 </div>
+
+                {/* Bottom hover line */}
+                <div className="absolute bottom-0 left-8 right-8 h-px bg-green/15 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" aria-hidden="true" />
               </Link>
             </motion.div>
           ))}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="mt-12 text-center"
-        >
-          <Link
-            href="/industries"
-            className="group inline-flex items-center gap-2 font-body text-base font-semibold px-8 py-4 rounded-full bg-white text-teal hover:bg-green/10 hover:text-green border border-gray-light hover:border-green/30 transition-all duration-300 shadow-green-sm"
-          >
-            View all industry solutions
-            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
-          </Link>
-        </motion.div>
-      </Container>
+      </div>
     </section>
   )
 }

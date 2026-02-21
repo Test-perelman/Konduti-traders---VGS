@@ -1,41 +1,31 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import {
-  Leaf, Target, Eye, Heart, MapPin, Truck, ShieldCheck, Users, ArrowRight
-} from 'lucide-react'
-import Container from '@/components/ui/Container'
-import SectionHeader from '@/components/ui/SectionHeader'
 import CtaBanner from '@/components/home/CtaBanner'
 
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about Konduti Traders — India\'s B2B fresh produce procurement company. Our mission, values, sourcing network, cold chain infrastructure, and quality assurance process.',
+    "Learn about Konduti Traders — India's B2B fresh produce procurement company. Our mission, values, sourcing network, and quality assurance process.",
   alternates: { canonical: '/about' },
 }
 
 const values = [
   {
-    Icon: ShieldCheck,
     title: 'Integrity First',
-    description: 'Transparent pricing, honest quality representation, and clear documentation. No surprises.',
+    body: 'Transparent pricing. Honest quality representation. Clear documentation. No surprises.',
   },
   {
-    Icon: Target,
     title: 'Quality Over Volume',
-    description: 'We never compromise on grade standards to fill volumes. If it does not meet spec, it does not ship.',
+    body: 'We never compromise on grade standards to fill volumes. If it doesn\'t meet spec, it doesn\'t ship.',
   },
   {
-    Icon: Users,
     title: 'Partnership Mindset',
-    description: 'We treat every buyer and every farmer as a long-term partner, not a transaction.',
+    body: 'Every buyer and farmer is a long-term partner, not a transaction. Relationships first.',
   },
   {
-    Icon: Leaf,
     title: 'Responsible Sourcing',
-    description: 'We actively reduce waste, support small farmers through FPO partnerships, and promote sustainable practices.',
+    body: 'We actively reduce waste, support small farmers through FPO partnerships, and promote sustainable practices.',
   },
 ]
 
@@ -49,109 +39,89 @@ const sourcing = [
 ]
 
 const qualitySteps = [
-  {
-    step: '01',
-    title: 'Pre-Harvest Assessment',
-    description: 'Our field teams visit farms 7–10 days before harvest to assess crop health, maturity stage, and expected quality.',
-  },
-  {
-    step: '02',
-    title: 'Harvest Coordination',
-    description: 'We coordinate harvest timing to ensure produce is picked at optimal maturity for its end use.',
-  },
-  {
-    step: '03',
-    title: 'Farm-Level Grading',
-    description: 'Immediate sorting by size, colour, and defects at the farm or nearby collection centre.',
-  },
-  {
-    step: '04',
-    title: 'Pre-Cooling',
-    description: 'Field heat is removed within 2–4 hours of harvest using forced-air or water cooling systems.',
-  },
-  {
-    step: '05',
-    title: 'Pack House QC',
-    description: 'Secondary grading, weight check, visual inspection, and FSSAI-compliant labelling.',
-  },
-  {
-    step: '06',
-    title: 'Cold Chain Dispatch',
-    description: 'Temperature-controlled dispatch with IoT logging. Documentation accompanies every consignment.',
-  },
+  { step: '01', title: 'Pre-Harvest Assessment', body: 'Field teams visit farms 7–10 days before harvest to assess crop health, maturity, and expected quality.' },
+  { step: '02', title: 'Harvest Coordination', body: 'We coordinate harvest timing to ensure produce is picked at optimal maturity for its end use.' },
+  { step: '03', title: 'Farm-Level Grading', body: 'Immediate sorting by size, colour, and defects at the farm or nearby collection centre.' },
+  { step: '04', title: 'Pre-Cooling', body: 'Field heat removed within 2–4 hours of harvest using forced-air or water cooling systems.' },
+  { step: '05', title: 'Pack House QC', body: 'Secondary grading, weight check, visual inspection, and FSSAI-compliant labelling.' },
+  { step: '06', title: 'Cold Chain Dispatch', body: 'Temperature-controlled dispatch with IoT logging. Full documentation with every consignment.' },
 ]
 
 const team = [
-  { name: 'Vikram Konduti', role: 'Founder & Managing Director', bio: '18 years in fresh produce trade across India. Former APMC board member and FPO advisory committee lead.', initial: 'V' },
-  { name: 'Preethi Shankar', role: 'Head of Quality Assurance', bio: 'Post-graduate in Food Technology from CFTRI Mysore. 12 years in produce QA for export and domestic markets.', initial: 'P' },
-  { name: 'Arjun Mehta', role: 'Head of Logistics', bio: 'Supply chain specialist with experience building cold chain networks for two major Indian food companies.', initial: 'A' },
-  { name: 'Divya Nair', role: 'Key Accounts Manager', bio: 'B2B relationship management specialist. Primary contact for supermarket and HoReCa accounts.', initial: 'D' },
+  { name: 'Vikram Konduti', role: 'Founder & Managing Director', bio: '18 years in fresh produce trade across India. Former APMC board member and FPO advisory committee lead.' },
+  { name: 'Preethi Shankar', role: 'Head of Quality Assurance', bio: 'Post-graduate in Food Technology from CFTRI Mysore. 12 years in produce QA for export and domestic markets.' },
+  { name: 'Arjun Mehta', role: 'Head of Logistics', bio: 'Supply chain specialist with experience building cold chain networks for two major Indian food companies.' },
+  { name: 'Divya Nair', role: 'Key Accounts Manager', bio: 'B2B relationship management specialist. Primary contact for supermarket and HoReCa accounts.' },
 ]
 
 export default function AboutPage() {
   return (
     <>
-      {/* Page Hero */}
-      <section className="pt-32 pb-20 bg-dark relative overflow-hidden" aria-labelledby="about-hero-heading">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute inset-0 opacity-[0.03]"
-            style={{ backgroundImage: 'radial-gradient(circle, rgba(95,208,104,0.8) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-green/5 blur-3xl" />
-        </div>
-        <Container>
-          <div className="max-w-3xl relative z-10">
-            <span className="inline-flex items-center gap-2 text-xs font-body font-semibold tracking-[0.2em] uppercase text-green mb-5">
-              <span className="w-6 h-px bg-green" />
-              About Konduti Traders
-            </span>
+      {/* ── Hero ── */}
+      <section
+        className="pt-32 pb-20 bg-dark relative overflow-hidden grain-overlay"
+        aria-labelledby="about-hero-heading"
+      >
+        <div className="absolute inset-0 bg-fine-grid pointer-events-none" aria-hidden="true" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-green/5 blur-[120px] pointer-events-none" aria-hidden="true" />
+
+        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+          <div className="max-w-3xl">
+            <span className="eyebrow-light block mb-6">About Konduti Traders</span>
             <h1
               id="about-hero-heading"
-              className="font-display font-semibold text-5xl md:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-6"
+              className="font-display font-light text-white mb-6"
+              style={{ fontSize: 'clamp(2.8rem, 6vw, 5.5rem)', lineHeight: '0.97', letterSpacing: '-0.04em' }}
             >
-              Rooted in Farms.
+              Rooted in farms.
               <br />
-              <span className="text-green">Trusted by Business.</span>
+              <span style={{ color: 'rgba(111,204,138,0.85)' }}>Trusted by business.</span>
             </h1>
-            <p className="font-body text-white/70 text-lg leading-relaxed max-w-2xl">
-              We are India&apos;s B2B fresh produce procurement partner — connecting farms directly
+            <p className="font-body text-white/50 max-w-xl" style={{ fontSize: '0.95rem', lineHeight: '1.8' }}>
+              India&apos;s B2B fresh produce procurement partner — connecting farms directly
               to the businesses that need consistent, quality, traceable supply.
             </p>
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Company Overview */}
+      {/* ── Story ── */}
       <section className="py-20 lg:py-28 bg-white" aria-labelledby="overview-heading">
-        <Container>
+        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <SectionHeader
-                eyebrow="Our Story"
-                heading="Built on 18 Years in the Trade"
-                align="left"
-              />
-              <div className="space-y-4 font-body text-base text-gray-text leading-relaxed">
+              <span className="eyebrow text-green block mb-5">Our Story</span>
+              <h2
+                id="overview-heading"
+                className="font-display font-light text-dark mb-7"
+                style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
+              >
+                Built on 18 years
+                <br />
+                in the trade.
+              </h2>
+              <div className="space-y-4 font-body text-gray-text" style={{ fontSize: '0.9rem', lineHeight: '1.85' }}>
                 <p>
                   Konduti Traders was founded with one conviction: that India&apos;s fresh produce
-                  supply chain could be better. Better for farmers who deserved fair prices and
-                  stable markets. Better for businesses who deserved consistent quality and
-                  reliable supply. Better for consumers who deserved fresher food with less waste.
+                  supply chain could be better. Better for farmers who deserved fair prices.
+                  Better for businesses who deserved reliable supply. Better for consumers
+                  who deserved fresher food with less waste.
                 </p>
                 <p>
-                  We started operations from Navi Mumbai&apos;s APMC market yard, with deep roots
-                  in the Maharashtra onion and grape trade. Over the years, we have expanded our
-                  sourcing network to 20+ growing regions across India, covering everything from
-                  Himachal apples to Ooty broccoli, Kerala coconuts to Andhra tomatoes.
+                  We started from Navi Mumbai&apos;s APMC market yard, deep in the Maharashtra
+                  onion and grape trade. Over the years, we expanded our sourcing network to
+                  20+ growing regions across India — Himachal apples to Ooty broccoli,
+                  Kerala coconuts to Andhra tomatoes.
                 </p>
                 <p>
-                  Today, we serve 100+ B2B buyers across the country — supermarket chains, hotel
-                  groups, cloud kitchen networks, wholesale distributors, and food processing
-                  units. Every consignment we dispatch carries our quality guarantee and our
-                  commitment to be a dependable partner, not just a vendor.
+                  Today, we serve 100+ B2B buyers — supermarket chains, hotel groups, cloud
+                  kitchen networks, wholesale distributors, and food processing units.
+                  Every consignment carries our quality guarantee and our commitment to be
+                  a dependable partner, not just a vendor.
                 </p>
               </div>
             </div>
-            <div className="relative rounded-3xl overflow-hidden h-80 lg:h-[480px]">
+            <div className="relative rounded-2xl overflow-hidden h-80 lg:h-[480px] shadow-premium-lg">
               <Image
                 src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80&auto=format&fit=crop"
                 alt="Farm fields — Konduti Traders sourcing regions"
@@ -159,150 +129,199 @@ export default function AboutPage() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark/30 to-transparent" aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/25 to-transparent" aria-hidden="true" />
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-20 lg:py-24 bg-mint" aria-labelledby="mission-heading">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                Icon: Target,
-                eyebrow: 'Our Mission',
-                heading: 'Reliable Fresh Produce for Every Indian Business',
-                text: 'To make farm-direct fresh produce supply accessible, consistent, and transparent for every B2B buyer in India — from the 5-outlet kirana chain to the 200-property hotel group.',
-                bg: 'bg-teal',
-                light: true,
-              },
-              {
-                Icon: Eye,
-                eyebrow: 'Our Vision',
-                heading: "India's Most Trusted Fresh Produce Supply Network",
-                text: 'To build India\'s most reliable and transparent farm-to-business fresh produce network, reducing waste, fairly rewarding farmers, and setting the standard for quality in B2B produce supply.',
-                bg: 'bg-white border border-gray-light',
-                light: false,
-              },
-            ].map(({ Icon, eyebrow, heading, text, bg, light }) => (
-              <div key={eyebrow} className={`p-10 rounded-3xl ${bg}`}>
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${light ? 'bg-white/15' : 'bg-green/10'}`}>
-                  <Icon className={`w-5 h-5 ${light ? 'text-white' : 'text-green'}`} aria-hidden="true" />
-                </div>
-                <span className={`font-body text-xs font-semibold tracking-[0.15em] uppercase ${light ? 'text-green' : 'text-green'} mb-3 block`}>
-                  {eyebrow}
-                </span>
-                <h2 id="mission-heading" className={`font-display font-semibold text-2xl md:text-3xl ${light ? 'text-white' : 'text-dark'} mb-4 leading-tight`}>
-                  {heading}
+      {/* ── Mission & Vision ── */}
+      <section className="py-16 lg:py-20 bg-mint" aria-labelledby="mission-heading">
+        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="p-10 rounded-2xl bg-teal-dark relative overflow-hidden">
+              <div className="absolute inset-0 bg-fine-grid pointer-events-none" aria-hidden="true" />
+              <div className="relative z-10">
+                <span className="eyebrow-light block mb-5">Our Mission</span>
+                <h2
+                  id="mission-heading"
+                  className="font-display font-light text-white mb-5"
+                  style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', lineHeight: '1.12', letterSpacing: '-0.025em' }}
+                >
+                  Reliable fresh produce
+                  <br />
+                  for every Indian business.
                 </h2>
-                <p className={`font-body text-base ${light ? 'text-white/75' : 'text-gray-text'} leading-relaxed`}>
-                  {text}
+                <p className="font-body text-white/50" style={{ fontSize: '0.85rem', lineHeight: '1.8' }}>
+                  To make farm-direct fresh produce supply accessible, consistent, and
+                  transparent for every B2B buyer in India — from the 5-outlet kirana
+                  chain to the 200-property hotel group.
+                </p>
+              </div>
+            </div>
+            <div className="p-10 rounded-2xl bg-white border border-stone-lighter">
+              <span className="eyebrow text-green block mb-5">Our Vision</span>
+              <h2
+                className="font-display font-light text-dark mb-5"
+                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', lineHeight: '1.12', letterSpacing: '-0.025em' }}
+              >
+                India&apos;s most trusted
+                <br />
+                fresh produce network.
+              </h2>
+              <p className="font-body text-stone" style={{ fontSize: '0.85rem', lineHeight: '1.8' }}>
+                To build India&apos;s most reliable and transparent farm-to-business fresh
+                produce network — reducing waste, fairly rewarding farmers, and setting
+                the standard for quality in B2B produce supply.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Values ── */}
+      <section className="py-20 lg:py-24 bg-white" aria-labelledby="values-heading">
+        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+          <div className="mb-12">
+            <span className="eyebrow text-green block mb-4">Our Values</span>
+            <h2
+              id="values-heading"
+              className="font-display font-light text-dark"
+              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
+            >
+              What we stand for.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-lighter/50 rounded-2xl overflow-hidden border border-stone-lighter/50">
+            {values.map(({ title, body }) => (
+              <div key={title} className="bg-white p-7 hover:bg-mint transition-colors duration-300">
+                <h3
+                  className="font-display font-medium text-dark mb-3"
+                  style={{ fontSize: '1.15rem', letterSpacing: '-0.02em', lineHeight: '1.2' }}
+                >
+                  {title}
+                </h3>
+                <p className="font-body text-stone" style={{ fontSize: '0.82rem', lineHeight: '1.75' }}>
+                  {body}
                 </p>
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Values */}
-      <section className="py-20 lg:py-28 bg-white" aria-labelledby="values-heading">
-        <Container>
-          <SectionHeader
-            eyebrow="Our Values"
-            heading="What We Stand For"
-            subheading="The principles that guide every sourcing decision, every partnership, and every consignment we dispatch."
-            id="values-heading"
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map(({ Icon, title, description }) => (
-              <div key={title} className="p-7 rounded-2xl bg-mint border border-gray-light hover:border-green/30 hover:shadow-green-sm transition-all duration-300">
-                <div className="w-11 h-11 rounded-xl bg-green/10 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-green" aria-hidden="true" />
-                </div>
-                <h3 className="font-display font-semibold text-lg text-dark mb-2">{title}</h3>
-                <p className="font-body text-sm text-gray-text leading-relaxed">{description}</p>
-              </div>
-            ))}
+      {/* ── Sourcing Network ── */}
+      <section className="py-20 lg:py-28 bg-teal-dark relative overflow-hidden grain-overlay" aria-labelledby="sourcing-heading">
+        <div className="absolute inset-0 bg-fine-grid pointer-events-none" aria-hidden="true" />
+        <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
+          <div className="mb-12">
+            <span className="eyebrow-light block mb-4">Sourcing Network</span>
+            <h2
+              id="sourcing-heading"
+              className="font-display font-light text-white"
+              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
+            >
+              20+ regions across India.
+            </h2>
           </div>
-        </Container>
-      </section>
-
-      {/* Sourcing Network */}
-      <section className="py-20 lg:py-28 bg-teal" aria-labelledby="sourcing-heading">
-        <Container>
-          <SectionHeader
-            eyebrow="Sourcing Network"
-            heading="20+ Regions Across India"
-            subheading="Our farm network spans India's most productive growing regions, giving us multi-source capability for every major produce category."
-            light
-            id="sourcing-heading"
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {sourcing.map(({ region, produce, districts }) => (
-              <div key={region} className="p-6 rounded-2xl bg-white/8 border border-white/15 hover:bg-white/12 transition-colors">
-                <div className="flex items-center gap-2.5 mb-3">
-                  <MapPin className="w-4 h-4 text-green shrink-0" aria-hidden="true" />
-                  <h3 className="font-display font-semibold text-lg text-white">{region}</h3>
-                </div>
-                <p className="font-body text-sm text-white/85 mb-2 font-medium">{produce}</p>
-                <p className="font-body text-xs text-white/50">{districts}</p>
+              <div key={region} className="p-6 rounded-xl bg-white/4 border border-white/8 hover:bg-white/8 transition-colors duration-300">
+                <h3
+                  className="font-display font-medium text-white mb-2"
+                  style={{ fontSize: '1.1rem', letterSpacing: '-0.018em' }}
+                >
+                  {region}
+                </h3>
+                <p className="font-body text-white/65 mb-1" style={{ fontSize: '0.82rem' }}>{produce}</p>
+                <p className="font-body text-white/30" style={{ fontSize: '0.72rem', letterSpacing: '0.02em' }}>{districts}</p>
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Quality Assurance */}
-      <section className="py-20 lg:py-28 bg-white" aria-labelledby="qa-heading">
-        <Container>
-          <SectionHeader
-            eyebrow="Quality Assurance"
-            heading="Quality at Every Step"
-            subheading="Our 6-stage quality process ensures every consignment meets your specification — from field to dock."
-            id="qa-heading"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {qualitySteps.map(({ step, title, description }) => (
-              <div key={step} className="flex gap-5 p-6 rounded-2xl bg-mint border border-gray-light hover:border-green/30 hover:shadow-green-sm transition-all duration-300">
-                <div className="shrink-0">
-                  <span className="font-display font-semibold text-4xl text-cream leading-none select-none" aria-hidden="true">
-                    {step}
-                  </span>
-                </div>
+      {/* ── Quality Assurance ── */}
+      <section className="py-20 lg:py-28 bg-off-white" aria-labelledby="qa-heading">
+        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+          <div className="mb-12">
+            <span className="eyebrow text-green block mb-4">Quality Assurance</span>
+            <h2
+              id="qa-heading"
+              className="font-display font-light text-dark"
+              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
+            >
+              Quality at every step.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {qualitySteps.map(({ step, title, body }) => (
+              <div
+                key={step}
+                className="flex gap-5 p-7 rounded-xl bg-white border border-stone-lighter hover:border-green/20 hover:shadow-green-sm transition-all duration-300"
+              >
+                <span
+                  className="font-display font-light text-cream leading-none shrink-0 select-none"
+                  style={{ fontSize: '2.5rem', lineHeight: '1', letterSpacing: '-0.04em' }}
+                  aria-hidden="true"
+                >
+                  {step}
+                </span>
                 <div>
-                  <h3 className="font-display font-semibold text-lg text-dark mb-2">{title}</h3>
-                  <p className="font-body text-sm text-gray-text leading-relaxed">{description}</p>
+                  <h3
+                    className="font-display font-medium text-dark mb-2"
+                    style={{ fontSize: '1.05rem', letterSpacing: '-0.018em', lineHeight: '1.2' }}
+                  >
+                    {title}
+                  </h3>
+                  <p className="font-body text-stone" style={{ fontSize: '0.8rem', lineHeight: '1.75' }}>
+                    {body}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* Leadership */}
-      <section className="py-20 lg:py-28 bg-mint" aria-labelledby="team-heading">
-        <Container>
-          <SectionHeader
-            eyebrow="Our Team"
-            heading="The People Behind the Supply"
-            subheading="Experienced professionals with deep roots in Indian agriculture, food technology, and logistics."
-            id="team-heading"
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map(({ name, role, bio, initial }) => (
-              <div key={name} className="bg-white rounded-2xl p-7 border border-gray-light shadow-green-sm hover:shadow-green-md card-hover">
-                <div className="w-16 h-16 rounded-2xl bg-teal/10 flex items-center justify-center mb-5">
-                  <span className="font-display font-semibold text-2xl text-teal">{initial}</span>
+      {/* ── Team ── */}
+      <section className="py-20 lg:py-28 bg-white" aria-labelledby="team-heading">
+        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+          <div className="mb-12">
+            <span className="eyebrow text-green block mb-4">Our Team</span>
+            <h2
+              id="team-heading"
+              className="font-display font-light text-dark"
+              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
+            >
+              The people behind the supply.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {team.map(({ name, role, bio }) => (
+              <div
+                key={name}
+                className="bg-white rounded-2xl p-7 border border-stone-lighter shadow-premium-sm hover:shadow-premium-md card-hover-subtle"
+              >
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center mb-5 text-white font-display font-medium text-2xl"
+                  style={{ background: 'linear-gradient(135deg, #2c5f4a, #3d8b5e)' }}
+                  aria-hidden="true"
+                >
+                  {name.charAt(0)}
                 </div>
-                <h3 className="font-display font-semibold text-xl text-dark mb-1">{name}</h3>
-                <p className="font-body text-xs font-semibold text-green uppercase tracking-wide mb-3">{role}</p>
-                <p className="font-body text-sm text-gray-text leading-relaxed">{bio}</p>
+                <h3
+                  className="font-display font-medium text-dark mb-0.5"
+                  style={{ fontSize: '1.1rem', letterSpacing: '-0.018em' }}
+                >
+                  {name}
+                </h3>
+                <p className="eyebrow text-green mb-3">{role}</p>
+                <p className="font-body text-stone" style={{ fontSize: '0.78rem', lineHeight: '1.75' }}>{bio}</p>
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
       <CtaBanner />

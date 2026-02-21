@@ -1,145 +1,139 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-  Leaf,
-  Award,
-  IndianRupee,
-  Truck,
-  Snowflake,
-  Package,
-} from 'lucide-react'
-import Container from '@/components/ui/Container'
-import SectionHeader from '@/components/ui/SectionHeader'
 
 const features = [
   {
-    Icon: Leaf,
+    number: '01',
     title: 'Direct Farm Procurement',
-    description:
-      'We bypass the intermediary chain and work directly with farms and FPOs across India\'s 20+ key growing regions, ensuring freshness and traceability in every batch.',
-    accent: 'bg-green/10 text-green',
+    body: 'We bypass the intermediary chain. Work directly with farms and FPOs across 20+ key growing regions. Freshness and traceability in every batch.',
   },
   {
-    Icon: Award,
+    number: '02',
     title: 'Quality Grading',
-    description:
-      'Every lot is graded by our on-ground QC teams — by size, colour, maturity, and defect percentage — to meet your exact product specification before dispatch.',
-    accent: 'bg-teal/10 text-teal',
+    body: 'Every lot graded by our on-ground QC teams — by size, colour, maturity, defect percentage — to your exact specification before dispatch.',
   },
   {
-    Icon: IndianRupee,
+    number: '03',
     title: 'Competitive Pricing',
-    description:
-      'Farm-direct procurement removes 2–3 intermediary margins. You get better produce at prices that improve your cost of goods, with transparent pricing structures.',
-    accent: 'bg-cream/80 text-teal-dark',
+    body: 'Farm-direct procurement removes 2–3 intermediary margins. Better produce. Better cost of goods. Transparent pricing structures.',
   },
   {
-    Icon: Truck,
+    number: '04',
     title: 'Pan-India Logistics',
-    description:
-      'Our logistics network covers all major metros, Tier 1 and Tier 2 cities. Own fleet for key corridors, third-party reefer partners for national reach.',
-    accent: 'bg-green/10 text-green',
+    body: 'All major metros, Tier 1 and Tier 2 cities. Own fleet for key corridors, reefer partners for national reach.',
   },
   {
-    Icon: Snowflake,
+    number: '05',
     title: 'Cold Chain Infrastructure',
-    description:
-      'Temperature-controlled storage and reefer transport maintain freshness from farm to dock. We provide dispatch temperature certificates with every consignment.',
-    accent: 'bg-teal/10 text-teal',
+    body: 'Temperature-controlled storage and reefer transport. Dispatch temperature certificates with every consignment.',
   },
   {
-    Icon: Package,
-    title: 'Reliable Bulk Supply',
-    description:
-      'Forward contracts and multi-region sourcing mean we can guarantee your volumes even during market disruptions, seasonal peaks, or supply chain stress.',
-    accent: 'bg-cream/80 text-teal-dark',
+    number: '06',
+    title: 'Guaranteed Volumes',
+    body: 'Forward contracts and multi-region sourcing. Consistent supply through market disruptions, seasonal peaks, and supply chain stress.',
   },
 ]
 
-const containerVariants = {
+const stagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.08 } },
 }
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 }
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 lg:py-32 bg-teal relative overflow-hidden" aria-labelledby="why-heading">
-      {/* Decorative elements */}
+    <section
+      className="py-24 lg:py-32 bg-teal-dark relative overflow-hidden grain-overlay"
+      aria-labelledby="why-heading"
+    >
+      {/* Ambient glow */}
       <div
-        className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full border border-white/5 pointer-events-none"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-green/8 blur-[120px] pointer-events-none"
         aria-hidden="true"
       />
-      <div
-        className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full border border-white/5 pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-20 left-1/3 w-96 h-96 rounded-full bg-green/8 blur-[120px] pointer-events-none"
-        aria-hidden="true"
-      />
+      {/* Fine grid */}
+      <div className="absolute inset-0 bg-fine-grid opacity-100 pointer-events-none" aria-hidden="true" />
 
-      {/* Subtle grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-        aria-hidden="true"
-      />
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12 relative z-10">
 
-      <Container>
-        <SectionHeader
-          eyebrow="Why Konduti"
-          heading="The Procurement Advantage"
-          subheading="Six reasons India's top B2B food businesses trust Konduti Traders as their primary fresh produce partner."
-          light
-          id="why-heading"
-        />
-
+        {/* Header */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-16"
         >
-          {features.map(({ Icon, title, description, accent }, index) => (
-            <motion.div key={title} variants={itemVariants}>
-              <div className="group relative p-8 rounded-2xl bg-white/[0.06] border border-white/[0.08] hover:bg-white/[0.12] hover:border-white/[0.18] transition-all duration-400 h-full overflow-hidden shimmer">
-                {/* Hover glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" aria-hidden="true" />
+          <span className="eyebrow-light block mb-5">Why Konduti</span>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <h2
+              id="why-heading"
+              className="font-display font-light text-white max-w-lg"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
+            >
+              The procurement
+              <br />
+              <span style={{ color: 'rgba(111, 204, 138, 0.9)' }}>advantage.</span>
+            </h2>
+            <p
+              className="font-body text-white/40 max-w-sm"
+              style={{ fontSize: '0.85rem', lineHeight: '1.75' }}
+            >
+              Six reasons India&apos;s top B2B food businesses trust Konduti Traders
+              as their primary fresh produce partner.
+            </p>
+          </div>
+        </motion.div>
 
-                <div className="relative z-10">
-                  {/* Icon & Number row */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${accent} transition-transform group-hover:scale-110 duration-300`}>
-                      <Icon className="w-6 h-6" aria-hidden="true" />
-                    </div>
-                    <span className="font-display text-6xl font-light text-white/[0.06] leading-none select-none" aria-hidden="true">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                  </div>
+        {/* Feature grid */}
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5"
+        >
+          {features.map(({ number, title, body }) => (
+            <motion.div
+              key={number}
+              variants={fadeUp}
+              className="group relative p-8 bg-teal-dark hover:bg-teal transition-colors duration-400 overflow-hidden"
+            >
+              {/* Large watermark number */}
+              <span
+                className="absolute -top-4 -right-2 font-display font-light leading-none select-none pointer-events-none section-number-dark"
+                style={{ fontSize: 'clamp(4rem, 8vw, 7rem)', letterSpacing: '-0.06em', color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}
+                aria-hidden="true"
+              >
+                {number}
+              </span>
 
-                  <h3 className="font-display font-semibold text-2xl text-white mb-4 leading-snug">
-                    {title}
-                  </h3>
-                  <p className="font-body text-base text-white/70 leading-relaxed">{description}</p>
-
-                  {/* Bottom accent line */}
-                  <div className="mt-6 h-px w-0 group-hover:w-full bg-gradient-to-r from-green/50 to-transparent transition-all duration-700" aria-hidden="true" />
-                </div>
+              <div className="relative z-10">
+                <span className="eyebrow-light block mb-5">{number}</span>
+                <h3
+                  className="font-display font-medium text-white mb-4"
+                  style={{ fontSize: '1.3rem', letterSpacing: '-0.02em', lineHeight: '1.2' }}
+                >
+                  {title}
+                </h3>
+                <p className="font-body text-white/45" style={{ fontSize: '0.83rem', lineHeight: '1.8' }}>
+                  {body}
+                </p>
+                {/* Hover line */}
+                <div
+                  className="mt-7 h-px w-0 group-hover:w-full bg-green/30 transition-all duration-700"
+                  aria-hidden="true"
+                />
               </div>
             </motion.div>
           ))}
         </motion.div>
-      </Container>
+
+      </div>
     </section>
   )
 }

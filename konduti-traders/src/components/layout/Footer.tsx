@@ -1,9 +1,7 @@
 import Link from 'next/link'
-import { Leaf, Phone, Mail, MapPin, Instagram, Linkedin, Twitter, ArrowUpRight } from 'lucide-react'
-import Container from '@/components/ui/Container'
+import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react'
 
 const quickLinks = [
-  { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
   { label: 'Products', href: '/products' },
   { label: 'How It Works', href: '/how-it-works' },
@@ -30,83 +28,110 @@ const industryLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white" role="contentinfo">
-      {/* Top Section */}
-      <div className="border-b border-white/10">
-        <Container>
-          <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-            {/* Brand Column */}
-            <div className="lg:col-span-2">
-              <Link href="/" className="flex items-center gap-2.5 mb-6" aria-label="Konduti Traders">
-                <div className="w-10 h-10 rounded-xl bg-green/15 flex items-center justify-center">
-                  <Leaf className="w-5 h-5 text-green" aria-hidden="true" />
-                </div>
-                <div className="flex flex-col leading-none">
-                  <span className="font-display font-semibold text-xl text-white">Konduti</span>
-                  <span className="font-body text-[12px] font-semibold tracking-[0.15em] uppercase text-green">
-                    Traders
-                  </span>
-                </div>
-              </Link>
+    <footer className="bg-dark relative overflow-hidden" role="contentinfo">
+      {/* Subtle ambient glow top */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-white/8"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-0 left-1/4 w-[300px] h-[200px] bg-green/4 blur-[80px] pointer-events-none"
+        aria-hidden="true"
+      />
 
-              <p className="font-body text-base text-white/70 leading-relaxed max-w-sm mb-8">
-                India&apos;s trusted B2B partner for fresh fruits and vegetables. Direct farm
-                sourcing, quality grading, and pan-India supply chain logistics.
-              </p>
+      {/* Main Grid */}
+      <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
+        <div className="pt-16 pb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 border-b border-white/6">
 
-              {/* Contact Info */}
-              <ul className="flex flex-col gap-3" aria-label="Contact information">
-                <li className="flex items-start gap-3 text-base font-body text-white/70">
-                  <MapPin className="w-5 h-5 text-green mt-0.5 shrink-0" aria-hidden="true" />
-                  <span>Plot 14, APMC Market Yard, Sector 19,<br />Vashi, Navi Mumbai — 400 705</span>
-                </li>
-                <li className="flex items-center gap-3 text-base font-body">
-                  <Phone className="w-5 h-5 text-green shrink-0" aria-hidden="true" />
-                  <a href="tel:+919876543210" className="text-white/70 hover:text-green transition-colors">
-                    +91 98765 43210
-                  </a>
-                </li>
-                <li className="flex items-center gap-3 text-base font-body">
-                  <Mail className="w-5 h-5 text-green shrink-0" aria-hidden="true" />
-                  <a
-                    href="mailto:procurement@kondutitraders.in"
-                    className="text-white/70 hover:text-green transition-colors"
-                  >
-                    procurement@kondutitraders.in
-                  </a>
-                </li>
-              </ul>
-
-              {/* Social */}
-              <div className="flex items-center gap-3 mt-6" aria-label="Social media links">
-                {[
-                  { Icon: Instagram, href: '#', label: 'Instagram' },
-                  { Icon: Linkedin, href: '#', label: 'LinkedIn' },
-                  { Icon: Twitter, href: '#', label: 'Twitter / X' },
-                ].map(({ Icon, href, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="w-9 h-9 rounded-lg bg-white/8 flex items-center justify-center hover:bg-green/20 hover:text-green text-white/50 transition-colors"
-                  >
-                    <Icon size={15} aria-hidden="true" />
-                  </a>
-                ))}
+          {/* Brand Column */}
+          <div className="lg:col-span-4">
+            {/* Logo */}
+            <Link href="/" className="inline-flex items-center gap-3 mb-8 group" aria-label="Konduti Traders">
+              <div className="w-9 h-9 rounded-full bg-green/12 border border-green/20 flex items-center justify-center text-green group-hover:bg-green/20 transition-colors">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true">
+                  <path d="M7 0.5C7 0.5 2 4 2 8.5a5 5 0 0010 0C12 4 7 0.5 7 0.5z"/>
+                  <path d="M7 4.5V12" stroke="currentColor" strokeWidth="1" fill="none" strokeLinecap="round" opacity="0.4"/>
+                </svg>
               </div>
+              <div>
+                <div className="font-display font-medium text-xl text-white tracking-[-0.025em]">Konduti</div>
+                <div className="font-body text-[0.52rem] tracking-[0.2em] uppercase text-green/70">Traders</div>
+              </div>
+            </Link>
+
+            {/* Manifesto line */}
+            <p className="font-display text-[1.5rem] leading-[1.2] tracking-[-0.02em] text-white/80 mb-6 max-w-[280px]">
+              Farm to business.<br />
+              <span className="text-green/60 italic">Every harvest. Every city.</span>
+            </p>
+
+            <p className="font-body text-sm text-white/40 leading-relaxed max-w-[300px] mb-8">
+              India&apos;s trusted B2B partner for fresh fruits and vegetables.
+              Direct sourcing, quality grading, pan-India cold chain delivery.
+            </p>
+
+            {/* Contact */}
+            <ul className="flex flex-col gap-3" aria-label="Contact information">
+              <li className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-green/60 mt-0.5 shrink-0" aria-hidden="true" />
+                <span className="font-body text-[0.8rem] text-white/45 leading-relaxed">
+                  Plot 14, APMC Market Yard, Sector 19,<br />
+                  Vashi, Navi Mumbai — 400 705
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-green/60 shrink-0" aria-hidden="true" />
+                <a
+                  href="tel:+919876543210"
+                  className="font-body text-[0.8rem] text-white/45 hover:text-green transition-colors"
+                >
+                  +91 98765 43210
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-green/60 shrink-0" aria-hidden="true" />
+                <a
+                  href="mailto:procurement@kondutitraders.in"
+                  className="font-body text-[0.8rem] text-white/45 hover:text-green transition-colors"
+                >
+                  procurement@kondutitraders.in
+                </a>
+              </li>
+            </ul>
+
+            {/* Social Links */}
+            <div className="flex gap-2 mt-6" aria-label="Social media">
+              {[
+                { label: 'Instagram', href: '#', icon: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z' },
+                { label: 'LinkedIn', href: '#', icon: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
+                { label: 'Twitter / X', href: '#', icon: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' },
+              ].map(({ label, href, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="w-8 h-8 rounded-full bg-white/5 border border-white/8 flex items-center justify-center hover:bg-green/15 hover:border-green/25 text-white/35 hover:text-green transition-all"
+                >
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
+                    <path d={icon} />
+                  </svg>
+                </a>
+              ))}
             </div>
+          </div>
+
+          {/* Navigation Columns */}
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
 
             {/* Quick Links */}
             <div>
-              <h3 className="font-body text-sm font-semibold tracking-[0.15em] uppercase text-green mb-6">
-                Quick Links
-              </h3>
+              <h3 className="eyebrow text-white/30 mb-5">Navigate</h3>
               <ul className="flex flex-col gap-3" role="list">
                 {quickLinks.map(link => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="font-body text-base text-white/60 hover:text-white transition-colors flex items-center gap-1 group"
+                      className="font-body text-[0.82rem] text-white/45 hover:text-white/80 transition-colors leading-none"
                     >
                       {link.label}
                     </Link>
@@ -117,15 +142,13 @@ export default function Footer() {
 
             {/* Products */}
             <div>
-              <h3 className="font-body text-sm font-semibold tracking-[0.15em] uppercase text-green mb-6">
-                Products
-              </h3>
+              <h3 className="eyebrow text-white/30 mb-5">Products</h3>
               <ul className="flex flex-col gap-3" role="list">
                 {productLinks.map(link => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="font-body text-base text-white/60 hover:text-white transition-colors"
+                      className="font-body text-[0.82rem] text-white/45 hover:text-white/80 transition-colors leading-none"
                     >
                       {link.label}
                     </Link>
@@ -134,17 +157,15 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Industries */}
-            <div>
-              <h3 className="font-body text-sm font-semibold tracking-[0.15em] uppercase text-green mb-6">
-                Industries
-              </h3>
-              <ul className="flex flex-col gap-3" role="list">
+            {/* Industries + CTA */}
+            <div className="col-span-2 md:col-span-1">
+              <h3 className="eyebrow text-white/30 mb-5">Industries</h3>
+              <ul className="flex flex-col gap-3 mb-8" role="list">
                 {industryLinks.map(link => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="font-body text-base text-white/60 hover:text-white transition-colors"
+                      className="font-body text-[0.82rem] text-white/45 hover:text-white/80 transition-colors leading-none"
                     >
                       {link.label}
                     </Link>
@@ -152,40 +173,42 @@ export default function Footer() {
                 ))}
               </ul>
 
-              {/* CTA */}
-              <div className="mt-8 p-5 rounded-xl bg-green/10 border border-green/20">
-                <p className="font-body text-sm text-white/70 mb-3">Ready to source fresh?</p>
+              {/* Inline CTA */}
+              <div className="p-4 rounded-xl border border-white/6 bg-white/3">
+                <p className="font-body text-[0.72rem] text-white/40 mb-3 leading-relaxed">
+                  Ready to streamline your fresh produce sourcing?
+                </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 font-body text-base font-semibold text-green hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 font-body text-[0.78rem] font-semibold text-green hover:text-green-light transition-colors group"
                 >
-                  Get a Quote <ArrowUpRight size={16} aria-hidden="true" />
+                  Start sourcing
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
                 </Link>
               </div>
             </div>
-          </div>
-        </Container>
-      </div>
 
-      {/* Bottom Bar */}
-      <Container>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-sm text-white/50">
+          <p className="font-body text-[0.72rem] text-white/28">
             © {new Date().getFullYear()} Konduti Traders Pvt. Ltd. All rights reserved.
           </p>
-          <div className="flex items-center gap-5">
-            <span className="font-body text-sm text-white/40">GST: 27XXXXX0000X1ZX</span>
-            <span className="text-white/20">·</span>
-            <Link href="/privacy" className="font-body text-sm text-white/50 hover:text-white/80 transition-colors">
+          <div className="flex items-center gap-5 flex-wrap justify-center">
+            <span className="font-body text-[0.72rem] text-white/22">GST: 27XXXXX0000X1ZX</span>
+            <span className="text-white/15" aria-hidden="true">·</span>
+            <Link href="/privacy" className="font-body text-[0.72rem] text-white/28 hover:text-white/55 transition-colors">
               Privacy
             </Link>
-            <span className="text-white/20">·</span>
-            <Link href="/terms" className="font-body text-sm text-white/50 hover:text-white/80 transition-colors">
+            <span className="text-white/15" aria-hidden="true">·</span>
+            <Link href="/terms" className="font-body text-[0.72rem] text-white/28 hover:text-white/55 transition-colors">
               Terms
             </Link>
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   )
 }
