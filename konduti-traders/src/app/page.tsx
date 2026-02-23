@@ -3,6 +3,7 @@ import HeroSection from '@/components/home/HeroSection'
 import TrustTicker from '@/components/home/TrustTicker'
 import AboutSnippet from '@/components/home/AboutSnippet'
 import ProductCategories from '@/components/home/ProductCategories'
+import FeaturedCarousel from '@/components/home/FeaturedCarousel'
 import WhyChooseUs from '@/components/home/WhyChooseUs'
 import HowItWorksSnippet from '@/components/home/HowItWorksSnippet'
 import WhoWeServe from '@/components/home/WhoWeServe'
@@ -25,6 +26,7 @@ export default function HomePage() {
       <TrustTicker />
       <AboutSnippet />
       <ProductCategories />
+      <FeaturedCarousel />
       <WhyChooseUs />
       <HowItWorksSnippet />
       <WhoWeServe />
