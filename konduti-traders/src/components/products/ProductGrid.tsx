@@ -17,7 +17,7 @@ export default function ProductGrid() {
   // Sync with URL search params
   useEffect(() => {
     const cat = searchParams.get('category') as ProductCategory | null
-    if (cat && ['fruits', 'vegetables', 'exotic', 'leafy', 'seasonal'].includes(cat)) {
+    if (cat && ['spices-herbs', 'grains-pulses', 'nuts-seeds', 'fruits-vegetables', 'beverages', 'dehydrated'].includes(cat)) {
       setActiveCategory(cat)
     } else {
       setActiveCategory('all')
