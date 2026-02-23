@@ -2,7 +2,7 @@ export interface IProduct {
   id: string
   name: string
   slug: string
-  category: 'fruits' | 'vegetables' | 'exotic' | 'leafy' | 'seasonal'
+  category: 'spices-herbs' | 'grains-pulses' | 'nuts-seeds' | 'fruits-vegetables' | 'beverages' | 'dehydrated'
   description: string
   availability: 'year-round' | 'seasonal'
   season?: string
@@ -59,4 +59,4 @@ export interface ITeamMember {
   image: string
 }
 
-export type ProductCategory = 'all' | 'fruits' | 'vegetables' | 'exotic' | 'leafy' | 'seasonal'
+export type ProductCategory = 'all' | 'spices-herbs' | 'grains-pulses' | 'nuts-seeds' | 'fruits-vegetables' | 'beverages' | 'dehydrated'
