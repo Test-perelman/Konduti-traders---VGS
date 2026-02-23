@@ -1,6 +1,6 @@
 "use client"
 
-import { memo, useEffect, useLayoutEffect, useMemo, useState } from "react"
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useState } from "react"
 import {
   AnimatePresence,
   motion,
@@ -40,10 +40,9 @@ export function useMediaQuery(
     return defaultValue
   })
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleChange = () => {
+  const handleChange = useCallback(() => {
     setMatches(getMatches(query))
-  }
+  }, [query])
 
   useIsomorphicLayoutEffect(() => {
     const matchMedia = window.matchMedia(query)
@@ -52,7 +51,7 @@ export function useMediaQuery(
     return () => {
       matchMedia.removeEventListener("change", handleChange)
     }
-  }, [query])
+  }, [query, handleChange])
 
   return matches
 }
