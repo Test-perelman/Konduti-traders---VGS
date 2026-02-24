@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react'
 
 const quickLinks = [
@@ -45,18 +46,15 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            {/* Logo */}
-            <Link href="/" className="inline-flex items-center gap-3 mb-8 group" aria-label="Konduti Traders">
-              <div className="w-9 h-9 rounded-full bg-green/12 border border-green/20 flex items-center justify-center text-green group-hover:bg-green/20 transition-colors">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true">
-                  <path d="M7 0.5C7 0.5 2 4 2 8.5a5 5 0 0010 0C12 4 7 0.5 7 0.5z"/>
-                  <path d="M7 4.5V12" stroke="currentColor" strokeWidth="1" fill="none" strokeLinecap="round" opacity="0.4"/>
-                </svg>
-              </div>
-              <div>
-                <div className="font-display font-medium text-xl text-white tracking-[-0.025em]">Konduti</div>
-                <div className="font-body text-[0.52rem] tracking-[0.2em] uppercase text-green/70">Traders</div>
-              </div>
+            {/* Brand Logo Image */}
+            <Link href="/" className="inline-block mb-8 group" aria-label="Konduti Traders">
+              <Image
+                src="/logo.jpeg"
+                alt="Konduti Traders Logo"
+                width={120}
+                height={120}
+                className="w-24 h-24 object-contain group-hover:opacity-80 transition-opacity"
+              />
             </Link>
 
             {/* Manifesto line */}
