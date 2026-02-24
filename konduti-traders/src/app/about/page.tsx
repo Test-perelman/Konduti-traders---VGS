@@ -4,6 +4,7 @@ import Link from 'next/link'
 import CtaBanner from '@/components/home/CtaBanner'
 import FounderSection from '@/components/about/FounderSection'
 import TeamSection from '@/components/about/TeamSection'
+import LogoDivider from '@/components/about/LogoDivider'
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -91,6 +92,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <LogoDivider />
 
       {/* ── Story ── */}
       <section className="py-20 lg:py-28 bg-white" aria-labelledby="overview-heading">
