@@ -1,0 +1,41 @@
+
+> konduti-traders@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+ ⚠ Port 3001 is in use, trying 3002 instead.
+ ⚠ Port 3002 is in use, trying 3003 instead.
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3003
+
+ ✓ Starting...
+ ✓ Ready in 2.8s
+ ○ Compiling / ...
+ ✓ Compiled / in 17.6s (1349 modules)
+ GET / 200 in 18306ms
+ ✓ Compiled in 1053ms (657 modules)
+ GET / 200 in 219ms
+ ✓ Compiled in 201ms (643 modules)
+ ○ Compiling /about ...
+ ✓ Compiled /about in 5.6s (1330 modules)
+ GET /about 200 in 5860ms
+ GET /about 200 in 70ms
+ GET / 200 in 138ms
+ GET / 200 in 97ms
+ GET / 200 in 74ms
+ GET /about 200 in 60ms
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+ ⚠ Port 3000 is in use, trying 3001 instead.
+ ⚠ Port 3001 is in use, trying 3002 instead.
+ ⚠ Port 3002 is in use, trying 3003 instead.
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3003
+
+ ✓ Starting...
+ ✓ Ready in 10.6s
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 4.5s

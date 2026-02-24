@@ -4,7 +4,11 @@
       "Bash(# Get video metadata to understand dimensions and duration ffprobe -v quiet -print_format json -show_streams \"\"d:/konduti Traders - Demo - VGS/animation video/animated-video.mp4\"\")",
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
-      "Bash(timeout 8 npm run dev:*)"
+      "Bash(timeout 8 npm run dev:*)",
+      "mcp__hostinger-api__hosting_listWebsitesV1"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "hostinger-api"
+  ]
 }

@@ -428,8 +428,8 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
         style={{
           width: `${imageSize}px`,
           height: `${imageSize}px`,
-          left: `${containerSize/2 + position.x}px`,
-          top: `${containerSize/2 + position.y}px`,
+          left: `${containerSize / 2 + position.x}px`,
+          top: `${containerSize / 2 + position.y}px`,
           opacity: position.fadeOpacity,
           transform: `translate(-50%, -50%) scale(${finalScale})`,
           zIndex: position.zIndex
@@ -547,6 +547,31 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
+        {/* Background Sphere Shell - Visual guide for the sphere shape */}
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none transition-opacity duration-700"
+          style={{
+            width: actualSphereRadius * 2,
+            height: actualSphereRadius * 2,
+            background: 'radial-gradient(circle at 30% 30%, rgba(61, 139, 94, 0.05) 0%, rgba(61, 139, 94, 0.02) 50%, rgba(61, 139, 94, 0.12) 100%)',
+            border: '1px solid rgba(61, 139, 94, 0.08)',
+            boxShadow: 'inset 0 0 60px rgba(61, 139, 94, 0.1), 0 0 30px rgba(61, 139, 94, 0.04)',
+            zIndex: 1,
+            opacity: 0.8
+          }}
+        />
+
+        {/* Subtle ground shadow for depth perception */}
+        <div
+          className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/4 rounded-[100%] pointer-events-none blur-3xl"
+          style={{
+            width: actualSphereRadius * 2.5,
+            height: actualSphereRadius * 0.5,
+            background: 'radial-gradient(ellipse at center, rgba(61, 139, 94, 0.15) 0%, transparent 70%)',
+            zIndex: 0
+          }}
+        />
+
         <div className="relative w-full h-full" style={{ zIndex: 10 }}>
           {images.map((image, index) => renderImageNode(image, index))}
         </div>

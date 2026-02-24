@@ -1,10 +1,12 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import SphereImageGrid, { ImageData } from '@/components/ui/image-sphere'
 
 export default function SphereImageGallery() {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
   // Generate gallery images from public folder
   const galleryImages: ImageData[] = useMemo(() => {
     const baseImages = [
