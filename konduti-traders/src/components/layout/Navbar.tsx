@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
@@ -14,123 +15,6 @@ const NAV_LINKS = [
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
-
-// ── Animated Logo Mark ────────────────────────────────────────────────────────
-function LogoMark({ isLight }: { isLight: boolean }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  const springConfig = { stiffness: 260, damping: 24, mass: 0.8 }
-  const rotateX = useSpring(useTransform(mouseY, [-30, 30], [12, -12]), springConfig)
-  const rotateY = useSpring(useTransform(mouseX, [-30, 30], [-10, 10]), springConfig)
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = ref.current?.getBoundingClientRect()
-    if (!rect) return
-    const cx = rect.left + rect.width / 2
-    const cy = rect.top + rect.height / 2
-    mouseX.set(e.clientX - cx)
-    mouseY.set(e.clientY - cy)
-  }
-  const handleMouseLeave = () => {
-    mouseX.set(0)
-    mouseY.set(0)
-  }
-
-  // Leaf layer definitions — each with depth offset (z) and angle
-  const layers = [
-    { rotate: -22, y: 3,  scale: 0.72, opacity: 0.35, delay: 0    },
-    { rotate: -10, y: 1,  scale: 0.86, opacity: 0.55, delay: 0.06 },
-    { rotate:   0, y: 0,  scale: 1,    opacity: 1,    delay: 0.12 },
-    { rotate:  12, y: 2,  scale: 0.82, opacity: 0.45, delay: 0.08 },
-  ]
-
-  const leafColor = isLight ? '#3d8b5e' : '#6fcf8a'
-  const stemColor = isLight ? '#2c5f4a' : '#4fc97e'
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ perspective: 320, transformStyle: 'preserve-3d' }}
-      className="relative w-16 h-16 cursor-pointer flex-shrink-0"
-    >
-      <motion.div
-        style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-        className="w-full h-full relative"
-      >
-        {/* Glow ring behind */}
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: isLight
-              ? 'radial-gradient(circle, rgba(61,139,94,0.12) 0%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(111,207,138,0.2) 0%, transparent 70%)',
-          }}
-        />
-
-        {/* Stacked leaf layers — adapted from the vertical card stack depth concept */}
-        <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
-          {layers.map((layer, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 8, scale: 0.7, rotateZ: layer.rotate - 8 }}
-              animate={{ opacity: layer.opacity, y: layer.y, scale: layer.scale, rotateZ: layer.rotate }}
-              transition={{
-                delay: layer.delay,
-                duration: 0.7,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="absolute"
-              style={{ transformOrigin: 'center bottom' }}
-            >
-              <svg width="34" height="44" viewBox="0 0 20 26" fill="none">
-                {/* Leaf shape */}
-                <path
-                  d="M10 1C10 1 1 7 1 15.5a9 9 0 0018 0C19 7 10 1 10 1z"
-                  fill={leafColor}
-                  opacity={0.9}
-                />
-                {/* Inner highlight */}
-                <path
-                  d="M10 4C10 4 4.5 9 4.5 15a5.5 5.5 0 003 4.9"
-                  stroke="rgba(255,255,255,0.25)"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-                {/* Stem */}
-                {i === 2 && (
-                  <path
-                    d="M10 24.5V15"
-                    stroke={stemColor}
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                    fill="none"
-                    opacity="0.6"
-                  />
-                )}
-              </svg>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Subtle animated pulse ring on the dominant leaf */}
-        <motion.div
-          className="absolute inset-0 rounded-full border pointer-events-none"
-          style={{ borderColor: isLight ? 'rgba(61,139,94,0.2)' : 'rgba(111,207,138,0.25)' }}
-          animate={{ scale: [1, 1.18, 1], opacity: [0.6, 0, 0.6] }}
-          transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-        />
-      </motion.div>
-    </motion.div>
-  )
-}
 
 // ── Wordmark ──────────────────────────────────────────────────────────────────
 function LogoWordmark({ isLight }: { isLight: boolean }) {
@@ -212,7 +96,14 @@ export default function Navbar() {
               className="flex items-center gap-3 group flex-shrink-0"
               aria-label="Konduti Traders — Home"
             >
-              <LogoMark isLight={isLight} />
+              <Image
+                src="/logo.jpeg"
+                alt="Konduti Traders Logo"
+                width={48}
+                height={48}
+                className="w-12 h-12 object-contain group-hover:opacity-80 transition-opacity"
+                priority
+              />
               <LogoWordmark isLight={isLight} />
             </Link>
 
