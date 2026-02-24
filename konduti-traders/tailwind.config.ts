@@ -41,6 +41,18 @@ const config: Config = {
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
+        // Enhanced base sizes — premium typography scale
+        'xs': ['0.8125rem', { lineHeight: '1.5' }], // 13px
+        'sm': ['0.9375rem', { lineHeight: '1.6' }], // 15px
+        'base': ['1.0625rem', { lineHeight: '1.65' }], // 17px
+        'lg': ['1.1875rem', { lineHeight: '1.7' }], // 19px
+        'xl': ['1.375rem', { lineHeight: '1.55' }], // 22px
+        '2xl': ['1.625rem', { lineHeight: '1.5' }], // 26px
+        '3xl': ['2rem', { lineHeight: '1.35' }], // 32px
+        '4xl': ['2.5rem', { lineHeight: '1.25' }], // 40px
+        '5xl': ['3.125rem', { lineHeight: '1.15' }], // 50px
+        '6xl': ['3.75rem', { lineHeight: '1.08' }], // 60px
+        '7xl': ['4.5rem', { lineHeight: '1.05' }], // 72px
         '8xl': ['6rem', { lineHeight: '1.0' }],
         '9xl': ['8rem', { lineHeight: '0.95' }],
         '10xl': ['10rem', { lineHeight: '0.9' }],

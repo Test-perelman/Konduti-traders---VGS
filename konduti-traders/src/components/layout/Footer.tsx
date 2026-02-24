@@ -75,26 +75,26 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-green/60 mt-0.5 shrink-0" aria-hidden="true" />
                 <span className="font-body text-[0.8rem] text-white/45 leading-relaxed">
-                  Plot 14, APMC Market Yard, Sector 19,<br />
-                  Vashi, Navi Mumbai — 400 705
+                  4-138, Girnibavi, Narsampet,<br />
+                  Warangal, Telangana — 506002
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-green/60 shrink-0" aria-hidden="true" />
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+918341167172"
                   className="font-body text-[0.8rem] text-white/45 hover:text-green transition-colors"
                 >
-                  +91 98765 43210
+                  +91 83411 67172
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-green/60 shrink-0" aria-hidden="true" />
                 <a
-                  href="mailto:procurement@kondutitraders.in"
+                  href="mailto:kondutitraders93@gmail.com"
                   className="font-body text-[0.8rem] text-white/45 hover:text-green transition-colors"
                 >
-                  procurement@kondutitraders.in
+                  kondutitraders93@gmail.com
                 </a>
               </li>
             </ul>

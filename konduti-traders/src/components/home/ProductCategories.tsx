@@ -7,39 +7,46 @@ import { VerticalImageStack } from '@/components/ui/vertical-image-stack'
 
 const categories = [
   {
-    id: 'fruits-vegetables',
-    label: 'Fruits & Vegetables',
-    count: '3 varieties',
-    image: 'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=800&q=85&auto=format&fit=crop',
-    desc: 'Seasonal fruits, imported fruits & fresh vegetables',
-    featured: true,
-  },
-  {
     id: 'spices-herbs',
     label: 'Spices & Herbs',
     count: '6 varieties',
-    image: 'https://images.unsplash.com/photo-1588421357574-87938a86fa28?w=600&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=85&auto=format&fit=crop',
     desc: 'Dry red chilli, turmeric, cumin, coriander & more',
+    featured: true,
   },
   {
     id: 'grains-pulses',
     label: 'Grains & Pulses',
     count: '6 varieties',
-    image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=85&auto=format&fit=crop',
     desc: 'Rice, wheat, maize, millets, tur dal & chana dal',
   },
   {
     id: 'nuts-seeds',
     label: 'Nuts & Seeds',
     count: '6 varieties',
-    image: 'https://images.unsplash.com/photo-1598497819201-af22a8e6b10d?w=600&q=80&auto=format&fit=crop',
-    desc: 'Peanuts, cashews, sesame, sunflower & chia seeds',
+    image: 'https://images.unsplash.com/photo-1599599810694-b5b3a304f04d?w=800&q=85&auto=format&fit=crop',
+    desc: 'Peanuts, cashews, sesame & sunflower seeds',
+  },
+  {
+    id: 'beverages',
+    label: 'Beverages',
+    count: '3 varieties',
+    image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=85&auto=format&fit=crop',
+    desc: 'Coffee, tea leaves & herbal infusions',
+  },
+  {
+    id: 'fruits-vegetables',
+    label: 'Fruits & Vegetables',
+    count: '3 varieties',
+    image: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=800&q=85&auto=format&fit=crop',
+    desc: 'Seasonal fruits, imported & fresh vegetables',
   },
   {
     id: 'dehydrated',
     label: 'Dehydrated Vegetables',
     count: '3 varieties',
-    image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1502332980242-df21f375000f?w=800&q=85&auto=format&fit=crop',
     desc: 'Dehydrated onion, garlic & fruits',
   },
 ]
@@ -77,14 +84,14 @@ export default function ProductCategories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-14"
+          className="mb-16"
         >
-          <span className="eyebrow text-green block mb-4">Product Range</span>
+          <span className="eyebrow text-green block mb-5">Product Range</span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2
               id="categories-heading"
               className="font-display font-light text-dark max-w-xl"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
+              style={{ fontSize: 'clamp(2.2rem, 4.2vw, 3.5rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
             >
               Every category.
               <br />
@@ -92,7 +99,7 @@ export default function ProductCategories() {
             </h2>
             <Link
               href="/products"
-              className="font-body text-[0.8rem] font-semibold text-green hover:text-teal transition-colors animated-underline self-start lg:self-end mb-1"
+              className="font-body text-sm font-semibold text-green hover:text-teal transition-colors animated-underline self-start lg:self-end mb-1"
             >
               View all products →
             </Link>
@@ -111,7 +118,7 @@ export default function ProductCategories() {
           <motion.div variants={fadeUp} className="lg:col-span-5 flex flex-col items-center">
             {/* Editorial label above */}
             <div className="w-full mb-5 pl-2">
-              <span className="eyebrow text-stone">Drag or scroll to explore</span>
+              <span className="eyebrow text-stone text-xs font-semibold tracking-[0.14em]">Drag or scroll to explore</span>
             </div>
 
             <div className="relative w-full flex justify-center">
@@ -162,7 +169,7 @@ export default function ProductCategories() {
             <Link
               href={`/products?category=${categories[0].id}`}
               className="mt-5 inline-flex items-center gap-2 font-body font-semibold text-green hover:text-teal transition-colors animated-underline"
-              style={{ fontSize: '0.8rem', letterSpacing: '0.02em' }}
+              style={{ fontSize: '0.85rem', letterSpacing: '0.02em' }}
             >
               Browse all categories
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -200,7 +207,7 @@ export default function ProductCategories() {
                     <div className="flex items-center justify-between gap-2 mb-1">
                       <h3
                         className="font-display font-medium text-dark group-hover:text-teal transition-colors"
-                        style={{ fontSize: '1.1rem', letterSpacing: '-0.018em' }}
+                        style={{ fontSize: '1.15rem', letterSpacing: '-0.018em' }}
                       >
                         {cat.label}
                       </h3>
@@ -210,7 +217,7 @@ export default function ProductCategories() {
                         </svg>
                       </div>
                     </div>
-                    <p className="font-body text-stone" style={{ fontSize: '0.78rem', lineHeight: '1.6' }}>
+                    <p className="font-body text-stone" style={{ fontSize: '0.8rem', lineHeight: '1.6', fontWeight: '400' }}>
                       {cat.desc}
                     </p>
                   </div>

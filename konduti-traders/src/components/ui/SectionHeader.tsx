@@ -12,7 +12,7 @@ interface SectionHeaderProps {
 }
 
 const headingSizes = {
-  sm: 'text-4xl md:text-5xl',
+  sm: 'text-3xl md:text-4xl lg:text-5xl',
   md: 'text-4xl md:text-5xl lg:text-6xl',
   lg: 'text-5xl md:text-6xl lg:text-7xl',
   xl: 'text-6xl md:text-7xl lg:text-8xl',
@@ -39,7 +39,7 @@ export default function SectionHeader({
       {eyebrow && (
         <span
           className={cn(
-            'inline-flex items-center gap-2.5 text-[13px] font-body font-bold tracking-[0.25em] uppercase',
+            'inline-flex items-center gap-2.5 text-xs font-body font-semibold tracking-[0.16em] uppercase',
             light ? 'text-green' : 'text-teal'
           )}
         >
@@ -71,7 +71,7 @@ export default function SectionHeader({
       {subheading && (
         <p
           className={cn(
-            'max-w-2xl font-body leading-relaxed text-lg md:text-xl',
+            'max-w-2xl font-body leading-relaxed text-lg md:text-xl lg:text-2xl font-light',
             light ? 'text-white/70' : 'text-gray-text',
             align === 'center' && 'mx-auto'
           )}

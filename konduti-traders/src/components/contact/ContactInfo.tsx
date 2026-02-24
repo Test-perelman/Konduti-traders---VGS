@@ -8,9 +8,9 @@ const contactDetails = [
     ),
     content: (
       <address className="not-italic font-body text-stone leading-relaxed" style={{ fontSize: '0.82rem' }}>
-        Plot 14, APMC Market Yard, Sector 19<br />
-        Vashi, Navi Mumbai — 400 705<br />
-        Maharashtra, India
+        4-138, Girnibavi, Narsampet,<br />
+        Warangal, Telangana — 506002<br />
+        India
       </address>
     ),
   },
@@ -23,11 +23,11 @@ const contactDetails = [
     ),
     content: (
       <a
-        href="tel:+919876543210"
+        href="tel:+918341167172"
         className="font-body font-medium hover:text-green transition-colors"
         style={{ fontSize: '0.82rem', color: '#2c5f4a' }}
       >
-        +91 98765 43210
+        +91 83411 67172
       </a>
     ),
   },
@@ -41,18 +41,11 @@ const contactDetails = [
     content: (
       <div className="flex flex-col gap-1">
         <a
-          href="mailto:procurement@kondutitraders.in"
+          href="mailto:kondutitraders93@gmail.com"
           className="font-body font-medium hover:text-green transition-colors"
           style={{ fontSize: '0.82rem', color: '#2c5f4a' }}
         >
-          procurement@kondutitraders.in
-        </a>
-        <a
-          href="mailto:info@kondutitraders.in"
-          className="font-body hover:text-green transition-colors text-stone"
-          style={{ fontSize: '0.8rem' }}
-        >
-          info@kondutitraders.in
+          kondutitraders93@gmail.com
         </a>
       </div>
     ),

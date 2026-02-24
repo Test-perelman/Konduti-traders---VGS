@@ -85,9 +85,9 @@ export default function HeroSection() {
 
         {/* Eyebrow */}
         <motion.div variants={item} className="mb-10">
-          <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/8 backdrop-blur-md border border-white/12">
+          <span className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/8 backdrop-blur-md border border-white/12">
             <span className="w-1.5 h-1.5 rounded-full bg-green-light animate-pulse" aria-hidden="true" />
-            <span className="font-body text-[0.68rem] font-semibold tracking-[0.22em] uppercase text-white/70">
+            <span className="font-body text-xs font-semibold tracking-[0.16em] uppercase text-white/75">
               India&apos;s B2B Fresh Produce Partner
             </span>
           </span>
@@ -115,8 +115,8 @@ export default function HeroSection() {
         {/* Sub-manifesto — short sharp lines */}
         <motion.div variants={item} className="mt-10 mb-12">
           <p
-            className="hero-subtext-glow font-body text-white/65 text-center"
-            style={{ fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', letterSpacing: '0.04em', lineHeight: '2' }}
+            className="hero-subtext-glow font-body text-white/70 text-center font-light"
+            style={{ fontSize: 'clamp(1.0rem, 2.2vw, 1.25rem)', letterSpacing: '0.03em', lineHeight: '1.8' }}
           >
             Direct from farms.&ensp;·&ensp;No intermediaries.&ensp;·&ensp;No margin leakage.
           </p>
@@ -127,7 +127,7 @@ export default function HeroSection() {
           <Link
             href="/contact"
             className="group inline-flex items-center gap-2.5 bg-green text-white font-body font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_40px_rgba(61,139,94,0.35)] hover:shadow-[0_0_60px_rgba(61,139,94,0.55)] hover:bg-green-light magnetic-btn"
-            style={{ fontSize: '0.85rem', letterSpacing: '0.02em' }}
+            style={{ fontSize: '0.9rem', letterSpacing: '0.02em' }}
           >
             Start Sourcing
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform">
@@ -137,7 +137,7 @@ export default function HeroSection() {
           <Link
             href="/products"
             className="inline-flex items-center gap-2 bg-white/8 text-white font-body font-medium px-8 py-4 rounded-full border border-white/18 hover:bg-white/14 hover:border-white/30 transition-all duration-300 backdrop-blur-sm"
-            style={{ fontSize: '0.85rem', letterSpacing: '0.02em' }}
+            style={{ fontSize: '0.9rem', letterSpacing: '0.02em' }}
           >
             Explore Products
           </Link>
@@ -165,7 +165,7 @@ export default function HeroSection() {
               >
                 {value}
               </span>
-              <span className="font-body text-white/45" style={{ fontSize: '0.65rem', letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+              <span className="font-body text-white/50" style={{ fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: '500' }}>
                 {label}
               </span>
             </div>
