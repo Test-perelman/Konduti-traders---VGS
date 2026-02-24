@@ -15,7 +15,7 @@ export default function LogoDivider() {
           className="flex justify-center"
         >
           <Image
-            src="/logo.jpeg"
+            src="/logo-full.png"
             alt="Konduti Traders"
             width={100}
             height={100}

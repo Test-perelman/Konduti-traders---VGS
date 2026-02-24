@@ -10,7 +10,7 @@ const categories = [
     id: 'spices-herbs',
     label: 'Spices & Herbs',
     count: '6 varieties',
-    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=85&auto=format&fit=crop',
+    image: '/images/products/turmeric.jpg',
     desc: 'Dry red chilli, turmeric, cumin, coriander & more',
     featured: true,
   },
@@ -18,35 +18,35 @@ const categories = [
     id: 'grains-pulses',
     label: 'Grains & Pulses',
     count: '6 varieties',
-    image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=85&auto=format&fit=crop',
+    image: '/images/products/wheat.jpg',
     desc: 'Rice, wheat, maize, millets, tur dal & chana dal',
   },
   {
     id: 'nuts-seeds',
     label: 'Nuts & Seeds',
     count: '6 varieties',
-    image: 'https://images.unsplash.com/photo-1599599810694-b5b3a304f04d?w=800&q=85&auto=format&fit=crop',
+    image: '/images/products/cashew-nuts.jpg',
     desc: 'Peanuts, cashews, sesame & sunflower seeds',
   },
   {
     id: 'beverages',
     label: 'Beverages',
     count: '3 varieties',
-    image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=85&auto=format&fit=crop',
+    image: '/images/products/coffee.jpg',
     desc: 'Coffee, tea leaves & herbal infusions',
   },
   {
     id: 'fruits-vegetables',
     label: 'Fruits & Vegetables',
     count: '3 varieties',
-    image: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=800&q=85&auto=format&fit=crop',
+    image: '/images/products/fresh-vegetables.jpg',
     desc: 'Seasonal fruits, imported & fresh vegetables',
   },
   {
     id: 'dehydrated',
     label: 'Dehydrated Vegetables',
     count: '3 varieties',
-    image: 'https://images.unsplash.com/photo-1502332980242-df21f375000f?w=800&q=85&auto=format&fit=crop',
+    image: '/images/products/dehydrated-garlic.png',
     desc: 'Dehydrated onion, garlic & fruits',
   },
 ]
@@ -131,8 +131,8 @@ export default function ProductCategories() {
 
               <VerticalImageStack
                 images={stackImages}
-                height={460}
-                width={270}
+                height={580}
+                width={360}
                 showDots={true}
                 showCounter={true}
               />
@@ -188,7 +188,7 @@ export default function ProductCategories() {
                   aria-label={`Browse ${cat.label}`}
                 >
                   {/* Image */}
-                  <div className="relative h-36 overflow-hidden">
+                  <div className="relative h-52 overflow-hidden">
                     <Image
                       src={cat.image}
                       alt={cat.label}
@@ -197,7 +197,7 @@ export default function ProductCategories() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 28vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark/45 to-transparent" aria-hidden="true" />
-                    <span className="absolute top-2.5 right-2.5 font-body text-[0.6rem] font-semibold tracking-[0.12em] uppercase text-white/60 bg-white/8 backdrop-blur-sm border border-white/10 px-2.5 py-1 rounded-full">
+                    <span className="absolute top-3 right-3 font-body text-[0.72rem] font-semibold tracking-[0.1em] uppercase text-white/70 bg-white/10 backdrop-blur-sm border border-white/15 px-3 py-1 rounded-full">
                       {cat.count}
                     </span>
                   </div>
@@ -207,7 +207,7 @@ export default function ProductCategories() {
                     <div className="flex items-center justify-between gap-2 mb-1">
                       <h3
                         className="font-display font-medium text-dark group-hover:text-teal transition-colors"
-                        style={{ fontSize: '1.15rem', letterSpacing: '-0.018em' }}
+                        style={{ fontSize: '1.35rem', letterSpacing: '-0.018em' }}
                       >
                         {cat.label}
                       </h3>
@@ -217,7 +217,7 @@ export default function ProductCategories() {
                         </svg>
                       </div>
                     </div>
-                    <p className="font-body text-stone" style={{ fontSize: '0.8rem', lineHeight: '1.6', fontWeight: '400' }}>
+                    <p className="font-body text-stone" style={{ fontSize: '0.96rem', lineHeight: '1.7', fontWeight: '400' }}>
                       {cat.desc}
                     </p>
                   </div>

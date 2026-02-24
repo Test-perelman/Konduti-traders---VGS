@@ -42,14 +42,14 @@ export default function TeamSection({ team }: TeamSectionProps) {
                 <Image
                   src={member.image}
                   alt={member.name}
-                  width={300}
-                  height={300}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  width={420}
+                  height={420}
+                  className="w-full h-64 object-cover rounded-lg mb-5"
                 />
               )}
-              <h3 className="font-display font-semibold text-dark text-lg mb-1">{member.name}</h3>
-              <p className="font-body text-green text-sm font-medium mb-3">{member.role}</p>
-              <p className="font-body text-gray-text text-sm leading-relaxed">{member.bio}</p>
+              <h3 className="font-display font-semibold text-dark text-2xl mb-1">{member.name}</h3>
+              <p className="font-body text-green text-base font-medium mb-3">{member.role}</p>
+              <p className="font-body text-gray-text text-base leading-relaxed">{member.bio}</p>
             </motion.div>
           ))}
         </div>

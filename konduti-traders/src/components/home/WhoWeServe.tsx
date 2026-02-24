@@ -1,44 +1,31 @@
 'use client'
 
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 const segments = [
   {
     title: 'Supermarket Chains',
     body: 'Retail-ready graded produce. Consistent sizing. Extended shelf life. Serve modern trade at scale.',
-    href: '/industries#supermarkets',
-    accent: 'green',
   },
   {
     title: 'HoReCa',
-    body: 'Kitchen-grade precision. Hotels, restaurants, catering — every portion spec met.',
-    href: '/industries#horeca',
-    accent: 'teal',
+    body: 'Kitchen-grade precision. Hotels, restaurants, catering - every portion spec met.',
   },
   {
     title: 'Wholesalers',
     body: 'High-volume. Mandi-direct pricing. Full documentation. Bulk logistics support.',
-    href: '/industries#wholesalers',
-    accent: 'cream',
   },
   {
     title: 'Cloud Kitchens',
     body: 'Daily fresh delivery. Calibrated to kitchen workflow and portion requirements.',
-    href: '/industries#cloud-kitchens',
-    accent: 'green',
   },
   {
     title: 'Food Processors',
     body: 'Technical-grade bulk. Assured volumes. Processing specifications guaranteed.',
-    href: '/industries#food-processors',
-    accent: 'teal',
   },
   {
     title: 'Retail Chains',
     body: 'Organised supply for kiranas competing on produce freshness and quality.',
-    href: '/industries#retail-chains',
-    accent: 'cream',
   },
 ]
 
@@ -79,12 +66,6 @@ export default function WhoWeServe() {
             >
               Who we supply to.
             </h2>
-            <Link
-              href="/industries"
-              className="font-body text-[0.8rem] font-semibold text-green hover:text-teal transition-colors animated-underline self-start lg:self-end mb-1"
-            >
-              View all industry solutions →
-            </Link>
           </div>
         </motion.div>
 
@@ -96,13 +77,9 @@ export default function WhoWeServe() {
           viewport={{ once: true, margin: '-60px' }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-lighter/50 rounded-2xl overflow-hidden border border-stone-lighter/50"
         >
-          {segments.map(({ title, body, href }) => (
+          {segments.map(({ title, body }) => (
             <motion.div key={title} variants={fadeUp}>
-              <Link
-                href={href}
-                className="group flex flex-col h-full p-8 bg-white hover:bg-mint transition-colors duration-300 relative overflow-hidden"
-                aria-label={`Learn about ${title} solutions`}
-              >
+              <article className="group flex flex-col h-full p-8 bg-white hover:bg-mint transition-colors duration-300 relative overflow-hidden">
                 <h3
                   className="font-display font-medium text-dark mb-3 group-hover:text-teal transition-colors duration-300"
                   style={{ fontSize: '1.25rem', letterSpacing: '-0.02em', lineHeight: '1.15' }}
@@ -126,7 +103,7 @@ export default function WhoWeServe() {
 
                 {/* Bottom hover line */}
                 <div className="absolute bottom-0 left-8 right-8 h-px bg-green/15 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" aria-hidden="true" />
-              </Link>
+              </article>
             </motion.div>
           ))}
         </motion.div>

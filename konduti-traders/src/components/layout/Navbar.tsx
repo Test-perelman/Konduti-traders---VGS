@@ -11,45 +11,11 @@ const NAV_LINKS = [
   { label: 'About', href: '/about' },
   { label: 'Products', href: '/products' },
   { label: 'How It Works', href: '/how-it-works' },
-  { label: 'Industries', href: '/industries' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
 
 // ── Wordmark ──────────────────────────────────────────────────────────────────
-function LogoWordmark({ isLight }: { isLight: boolean }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -10 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col leading-none gap-[3px]"
-    >
-      <span
-        className={cn(
-          'font-display font-medium leading-none transition-colors duration-500',
-          isLight ? 'text-dark' : 'text-white'
-        )}
-        style={{ fontSize: '1.65rem', letterSpacing: '-0.035em' }}
-      >
-        Konduti
-      </span>
-      <motion.span
-        initial={{ opacity: 0, letterSpacing: '0.08em' }}
-        animate={{ opacity: 1, letterSpacing: '0.22em' }}
-        transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className={cn(
-          'font-body uppercase transition-colors duration-500',
-          isLight ? 'text-stone' : 'text-white/45'
-        )}
-        style={{ fontSize: '0.58rem' }}
-      >
-        Traders
-      </motion.span>
-    </motion.div>
-  )
-}
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -85,7 +51,7 @@ export default function Navbar() {
       >
         <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
           <nav
-            className="flex items-center justify-between h-[76px] lg:h-[88px]"
+            className="flex items-center justify-between h-[88px] lg:h-[96px]"
             role="navigation"
             aria-label="Main navigation"
           >
@@ -93,22 +59,21 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-3 group flex-shrink-0"
+              className="flex items-center group flex-shrink-0"
               aria-label="Konduti Traders — Home"
             >
               <Image
-                src="/logo.jpeg"
+                src="/logo-full.png"
                 alt="Konduti Traders Logo"
-                width={48}
-                height={48}
-                className="w-12 h-12 object-contain group-hover:opacity-80 transition-opacity"
+                width={280}
+                height={146}
+                className="w-auto h-[72px] md:h-[78px] lg:h-[84px] object-contain group-hover:opacity-85 transition-opacity"
                 priority
               />
-              <LogoWordmark isLight={isLight} />
             </Link>
 
             {/* Desktop Nav */}
-            <ul className="hidden lg:flex items-center gap-7" role="list">
+            <ul className="hidden lg:flex items-center gap-8" role="list">
               {NAV_LINKS.map(link => {
                 const active = pathname === link.href
                 return (
@@ -116,9 +81,9 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       className={cn(
-                        'relative font-body text-[0.8rem] font-medium tracking-[0.01em] transition-colors duration-300 py-1 group',
+                        'relative font-body text-[0.95rem] font-medium tracking-[0.01em] transition-colors duration-300 py-1 group',
                         active
-                          ? isLight ? 'text-dark' : 'text-white'
+                          ? 'text-green font-semibold'
                           : isLight ? 'text-stone hover:text-dark' : 'text-white/65 hover:text-white'
                       )}
                       aria-current={active ? 'page' : undefined}
@@ -139,7 +104,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 className={cn(
-                  'hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-body text-[0.75rem] font-semibold tracking-[0.03em] transition-all duration-300 magnetic-btn',
+                  'hidden lg:inline-flex items-center gap-2 px-6 py-3 rounded-full font-body text-[0.9rem] font-semibold tracking-[0.02em] transition-all duration-300 magnetic-btn',
                   isLight
                     ? 'bg-green text-white hover:bg-green-dark shadow-green-sm hover:shadow-green-md'
                     : 'bg-white/10 text-white border border-white/22 hover:bg-white/18 backdrop-blur-sm'
@@ -232,7 +197,7 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         className={cn(
-                          'flex items-center justify-between py-3.5 border-b border-stone-lighter/50 font-display text-[1.6rem] tracking-[-0.03em] transition-colors',
+                          'flex items-center justify-between py-4 border-b border-stone-lighter/50 font-display text-[1.85rem] tracking-[-0.03em] transition-colors',
                           pathname === link.href ? 'text-green' : 'text-dark hover:text-green'
                         )}
                         aria-current={pathname === link.href ? 'page' : undefined}
@@ -256,7 +221,7 @@ export default function Navbar() {
               >
                 <Link
                   href="/contact"
-                  className="block w-full text-center bg-green text-white font-body text-sm font-semibold tracking-[0.025em] py-3.5 rounded-full hover:bg-green-dark transition-colors"
+                  className="block w-full text-center bg-green text-white font-body text-base font-semibold tracking-[0.02em] py-4 rounded-full hover:bg-green-dark transition-colors"
                 >
                   Get a Quote
                 </Link>
@@ -268,3 +233,4 @@ export default function Navbar() {
     </>
   )
 }
+

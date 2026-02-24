@@ -56,23 +56,25 @@ export function useMediaQuery(
   return matches
 }
 
-// 14 curated Unsplash images — spices, grains, nuts, produce
-const productImages = [
-  "https://images.unsplash.com/photo-1588421357574-87938a86fa28?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1612363148914-32c8a16b9ee1?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1598497819201-af22a8e6b10d?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1548094878-84ced0f35b3c?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1584473457406-6240486418e9?w=400&q=80&auto=format&fit=crop",
+const galleryImageFiles = [
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.06 (1).jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.06.jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.07 (1).jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.07 (2).jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.07.jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.08 (1).jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.08 (2).jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.08.jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.09 (1).jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.09 (2).jpeg",
+  "gallery/WhatsApp Image 2026-02-24 at 17.18.09.jpeg",
+  "founder images/sridhar.jpg.jpeg",
+  "/logo-full.png",
 ]
+
+const galleryImagePaths = galleryImageFiles.map((file) =>
+  encodeURI(file.startsWith("/") ? file : `/gallery images/${file}`)
+)
 
 const duration = 0.15
 const transition = { duration, ease: [0.32, 0.72, 0, 1] as const }
@@ -91,7 +93,7 @@ const Carousel = memo(
     isCarouselActive: boolean
   }) => {
     const isScreenSizeSm = useMediaQuery("(max-width: 640px)")
-    const cylinderWidth = isScreenSizeSm ? 1100 : 1800
+    const cylinderWidth = isScreenSizeSm ? 1500 : 2500
     const faceCount = cards.length
     const faceWidth = cylinderWidth / faceCount
     const radius = cylinderWidth / (2 * Math.PI)
@@ -105,7 +107,7 @@ const Carousel = memo(
       <div
         className="flex h-full items-center justify-center bg-teal-dark"
         style={{
-          perspective: "1000px",
+          perspective: "1200px",
           transformStyle: "preserve-3d",
           willChange: "transform",
         }}
@@ -140,7 +142,7 @@ const Carousel = memo(
           {cards.map((imgUrl, i) => (
             <motion.div
               key={`key-${imgUrl}-${i}`}
-              className="absolute flex h-full origin-center items-center justify-center rounded-xl bg-teal-dark p-2"
+              className="absolute flex h-full origin-center items-center justify-center rounded-xl bg-teal-dark p-3"
               style={{
                 width: `${faceWidth}px`,
                 transform: `rotateY(${
@@ -172,7 +174,7 @@ function ThreeDPhotoCarousel() {
   const [activeImg, setActiveImg] = useState<string | null>(null)
   const [isCarouselActive, setIsCarouselActive] = useState(true)
   const controls = useAnimation()
-  const cards = useMemo(() => productImages, [])
+  const cards = useMemo(() => galleryImagePaths, [])
 
   const handleClick = (imgUrl: string) => {
     setActiveImg(imgUrl)
@@ -213,7 +215,7 @@ function ThreeDPhotoCarousel() {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="relative h-[500px] w-full overflow-hidden">
+      <div className="relative h-[560px] md:h-[700px] w-full overflow-hidden">
         <Carousel
           handleClick={handleClick}
           controls={controls}

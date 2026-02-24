@@ -177,7 +177,7 @@ export const products: IProduct[] = [
     description: 'Hard red and soft wheat from Madhya Pradesh, Punjab, and Rajasthan. Consistent protein content, low moisture, machine-sorted. Ideal for flour mills, atta brands, bakeries, and commodity traders.',
     availability: 'seasonal',
     season: 'Apr – Jun',
-    image: '/images/products/wheat.png',
+    image: '/images/products/wheat.jpg',
     unit: 'per kg / per MT',
     minOrder: '1 MT',
     tags: ['MP', 'Milling grade', 'Low moisture'],

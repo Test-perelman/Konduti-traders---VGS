@@ -17,7 +17,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
       aria-label={post.title}
     >
       {/* Image */}
-      <div className={`relative overflow-hidden shrink-0 ${featured ? 'h-56 md:h-auto md:w-80' : 'h-44'}`}>
+      <div className={`relative overflow-hidden shrink-0 ${featured ? 'h-72 md:h-auto md:w-96' : 'h-56'}`}>
         <Image
           src={post.image}
           alt={post.title}
@@ -40,7 +40,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
               featured ? '' : ''
             }`}
             style={{
-              fontSize: featured ? 'clamp(1.3rem, 2.5vw, 1.85rem)' : '1.2rem',
+              fontSize: featured ? 'clamp(1.5rem, 2.8vw, 2.15rem)' : '1.4rem',
               letterSpacing: '-0.025em',
               lineHeight: '1.18',
             }}
@@ -49,13 +49,13 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
           </h2>
         </Link>
 
-        <p className="font-body text-stone flex-1 line-clamp-3 mb-5" style={{ fontSize: '0.83rem', lineHeight: '1.75' }}>
+        <p className="font-body text-stone flex-1 line-clamp-3 mb-5" style={{ fontSize: '0.96rem', lineHeight: '1.8' }}>
           {post.excerpt}
         </p>
 
         {/* Meta row */}
         <div className="flex items-center justify-between pt-4 border-t border-stone-lighter">
-          <div className="flex items-center gap-3 font-body text-stone" style={{ fontSize: '0.7rem', letterSpacing: '0.04em' }}>
+          <div className="flex items-center gap-3 font-body text-stone" style={{ fontSize: '0.82rem', letterSpacing: '0.03em' }}>
             <span>{formatDate(post.date)}</span>
             <span className="text-stone-light" aria-hidden="true">·</span>
             <span>{post.readTime}</span>
@@ -63,7 +63,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
           <Link
             href={`/blog/${post.slug}`}
             className="inline-flex items-center gap-1 font-body font-semibold text-green hover:text-teal transition-colors group/read"
-            style={{ fontSize: '0.72rem', letterSpacing: '0.04em' }}
+            style={{ fontSize: '0.84rem', letterSpacing: '0.03em' }}
             aria-label={`Read ${post.title}`}
           >
             Read

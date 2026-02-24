@@ -24,8 +24,8 @@ interface VerticalImageStackProps {
 export function VerticalImageStack({
   images,
   className = '',
-  height = 420,
-  width = 260,
+  height = 520,
+  width = 320,
   showCounter = false,
   showDots = true,
 }: VerticalImageStackProps) {
@@ -122,7 +122,7 @@ export function VerticalImageStack({
                 {/* Bottom label overlay */}
                 {img.label && isCurrent && (
                   <div className="absolute bottom-0 inset-x-0 z-20 bg-gradient-to-t from-dark/80 via-dark/30 to-transparent px-5 pt-12 pb-5">
-                    <p className="font-display font-light text-white text-lg leading-tight" style={{ letterSpacing: '-0.02em' }}>
+                    <p className="font-display font-light text-white text-2xl leading-tight" style={{ letterSpacing: '-0.02em' }}>
                       {img.label}
                     </p>
                   </div>
@@ -154,11 +154,11 @@ export function VerticalImageStack({
       {/* Counter */}
       {showCounter && (
         <div className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col items-center">
-          <span className="font-display font-light text-dark tabular-nums" style={{ fontSize: '2rem', letterSpacing: '-0.04em', lineHeight: 1 }}>
+          <span className="font-display font-light text-dark tabular-nums" style={{ fontSize: '2.5rem', letterSpacing: '-0.04em', lineHeight: 1 }}>
             {String(currentIndex + 1).padStart(2, '0')}
           </span>
           <div className="my-1.5 h-px w-6 bg-stone-lighter" />
-          <span className="font-body text-stone tabular-nums" style={{ fontSize: '0.72rem' }}>
+          <span className="font-body text-stone tabular-nums" style={{ fontSize: '0.85rem' }}>
             {String(images.length).padStart(2, '0')}
           </span>
         </div>

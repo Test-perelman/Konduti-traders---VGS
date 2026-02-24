@@ -18,10 +18,10 @@ export default function FounderSection() {
             className="order-2 lg:order-1"
           >
             <Image
-              src="/gallery images/founder images/sridhar.jpg.jpeg"
+              src="/gallery images/founder images/founder_new.png"
               alt="Sridhar, Founder & Managing Director"
-              width={400}
-              height={500}
+              width={540}
+              height={700}
               className="rounded-xl shadow-premium-lg w-full h-auto object-cover"
             />
           </motion.div>

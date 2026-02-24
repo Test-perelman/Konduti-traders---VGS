@@ -16,7 +16,7 @@ export default function ProductCard({ product, onRequestQuote }: ProductCardProp
       aria-label={product.name}
     >
       {/* Image */}
-      <div className="relative h-44 overflow-hidden">
+      <div className="relative h-60 overflow-hidden">
         <Image
           src={product.image}
           alt={`${product.name} — ${product.description.slice(0, 80)}`}
@@ -29,7 +29,7 @@ export default function ProductCard({ product, onRequestQuote }: ProductCardProp
         {/* Availability badge */}
         <div className="absolute top-3 right-3">
           <span
-            className={`font-body font-semibold tracking-[0.12em] uppercase px-2.5 py-1 rounded-full text-[0.6rem] backdrop-blur-sm border ${
+                className={`font-body font-semibold tracking-[0.1em] uppercase px-3 py-1 rounded-full text-[0.72rem] backdrop-blur-sm border ${
               product.availability === 'year-round'
                 ? 'bg-green/15 text-green border-green/20 text-white/90'
                 : 'bg-cream/20 text-white border-cream/25'
@@ -44,23 +44,23 @@ export default function ProductCard({ product, onRequestQuote }: ProductCardProp
       <div className="p-5 flex flex-col flex-1">
         <h3
           className="font-display font-medium text-dark mb-2 leading-tight"
-          style={{ fontSize: '1.1rem', letterSpacing: '-0.018em' }}
+          style={{ fontSize: '1.35rem', letterSpacing: '-0.018em' }}
         >
           {product.name}
         </h3>
 
-        <p className="font-body text-stone flex-1 line-clamp-2 mb-4" style={{ fontSize: '0.78rem', lineHeight: '1.7' }}>
+        <p className="font-body text-stone flex-1 line-clamp-2 mb-4" style={{ fontSize: '0.94rem', lineHeight: '1.8' }}>
           {product.description}
         </p>
 
         {/* Meta */}
         <div className="flex flex-col gap-1 mb-4">
-          <div className="flex items-center gap-2 font-body text-stone" style={{ fontSize: '0.72rem' }}>
+          <div className="flex items-center gap-2 font-body text-stone" style={{ fontSize: '0.85rem' }}>
             <Package className="w-3 h-3 text-teal" aria-hidden="true" />
             <span>Min. order: {product.minOrder || '50 kg'}</span>
           </div>
           {product.season && (
-            <div className="flex items-center gap-2 font-body text-stone" style={{ fontSize: '0.72rem' }}>
+            <div className="flex items-center gap-2 font-body text-stone" style={{ fontSize: '0.85rem' }}>
               <span className="w-3 h-3 flex items-center justify-center" aria-hidden="true">📅</span>
               <span>Season: {product.season}</span>
             </div>
@@ -74,7 +74,7 @@ export default function ProductCard({ product, onRequestQuote }: ProductCardProp
               <span
                 key={tag}
                 className="px-2 py-0.5 rounded-full bg-mint font-body text-teal"
-                style={{ fontSize: '0.65rem', fontWeight: 500 }}
+                style={{ fontSize: '0.78rem', fontWeight: 500 }}
               >
                 {tag}
               </span>
@@ -86,7 +86,7 @@ export default function ProductCard({ product, onRequestQuote }: ProductCardProp
         <button
           onClick={() => onRequestQuote?.(product)}
           className="mt-auto flex items-center justify-center gap-2 w-full py-2.5 bg-green/7 text-green border border-green/15 rounded-lg font-body font-semibold hover:bg-green hover:text-white hover:border-green transition-all duration-250 magnetic-btn"
-          style={{ fontSize: '0.77rem', letterSpacing: '0.02em' }}
+          style={{ fontSize: '0.92rem', letterSpacing: '0.02em' }}
           aria-label={`Request a quote for ${product.name}`}
         >
           Request Quote

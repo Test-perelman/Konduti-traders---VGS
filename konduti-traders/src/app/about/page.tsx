@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import CtaBanner from '@/components/home/CtaBanner'
 import FounderSection from '@/components/about/FounderSection'
-import TeamSection from '@/components/about/TeamSection'
 import LogoDivider from '@/components/about/LogoDivider'
 
 export const metadata: Metadata = {
@@ -48,18 +47,6 @@ const qualitySteps = [
   { step: '04', title: 'Pre-Cooling', body: 'Field heat removed within 2–4 hours of harvest using forced-air or water cooling systems.' },
   { step: '05', title: 'Pack House QC', body: 'Secondary grading, weight check, visual inspection, and FSSAI-compliant labelling.' },
   { step: '06', title: 'Cold Chain Dispatch', body: 'Temperature-controlled dispatch with IoT logging. Full documentation with every consignment.' },
-]
-
-const team = [
-  {
-    name: 'Sridhar',
-    role: 'Founder & Managing Director',
-    bio: '18+ years in fresh produce trade across India. Former APMC board member and FPO advisory committee lead. Visionary in direct farm-to-business supply chains.',
-    image: '/gallery images/founder images/sridhar.jpg.jpeg'
-  },
-  { name: 'Preethi Shankar', role: 'Head of Quality Assurance', bio: 'Post-graduate in Food Technology from CFTRI Mysore. 12 years in produce QA for export and domestic markets.' },
-  { name: 'Arjun Mehta', role: 'Head of Logistics', bio: 'Supply chain specialist with experience building cold chain networks for two major Indian food companies.' },
-  { name: 'Divya Nair', role: 'Key Accounts Manager', bio: 'B2B relationship management specialist. Primary contact for supermarket and HoReCa accounts.' },
 ]
 
 export default function AboutPage() {
@@ -131,7 +118,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="relative rounded-2xl overflow-hidden h-80 lg:h-[480px] shadow-premium-lg">
+            <div className="relative rounded-2xl overflow-hidden h-96 lg:h-[620px] shadow-premium-lg">
               <Image
                 src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80&auto=format&fit=crop"
                 alt="Farm fields — Konduti Traders sourcing regions"
@@ -295,7 +282,6 @@ export default function AboutPage() {
       </section>
 
       <FounderSection />
-      <TeamSection team={team} />
 
       <CtaBanner />
     </>

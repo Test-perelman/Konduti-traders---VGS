@@ -6,7 +6,6 @@ const quickLinks = [
   { label: 'About Us', href: '/about' },
   { label: 'Products', href: '/products' },
   { label: 'How It Works', href: '/how-it-works' },
-  { label: 'Industries', href: '/industries' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -19,12 +18,12 @@ const productLinks = [
   { label: 'Seasonal Specials', href: '/products?category=seasonal' },
 ]
 
-const industryLinks = [
-  { label: 'Supermarket Chains', href: '/industries#supermarkets' },
-  { label: 'HoReCa', href: '/industries#horeca' },
-  { label: 'Wholesalers', href: '/industries#wholesalers' },
-  { label: 'Cloud Kitchens', href: '/industries#cloud-kitchens' },
-  { label: 'Food Processors', href: '/industries#food-processors' },
+const industrySegments = [
+  'Supermarket Chains',
+  'HoReCa',
+  'Wholesalers',
+  'Cloud Kitchens',
+  'Food Processors',
 ]
 
 export default function Footer() {
@@ -49,21 +48,21 @@ export default function Footer() {
             {/* Brand Logo Image */}
             <Link href="/" className="inline-block mb-8 group" aria-label="Konduti Traders">
               <Image
-                src="/logo.jpeg"
+                src="/logo-full.png"
                 alt="Konduti Traders Logo"
-                width={120}
-                height={120}
-                className="w-24 h-24 object-contain group-hover:opacity-80 transition-opacity"
+                width={150}
+                height={150}
+                className="w-28 h-28 object-contain group-hover:opacity-80 transition-opacity"
               />
             </Link>
 
             {/* Manifesto line */}
-            <p className="font-display text-[1.5rem] leading-[1.2] tracking-[-0.02em] text-white/80 mb-6 max-w-[280px]">
+            <p className="font-display text-[1.9rem] leading-[1.2] tracking-[-0.02em] text-white/80 mb-6 max-w-[320px]">
               Farm to business.<br />
               <span className="text-green/60 italic">Every harvest. Every city.</span>
             </p>
 
-            <p className="font-body text-sm text-white/40 leading-relaxed max-w-[300px] mb-8">
+            <p className="font-body text-base text-white/40 leading-relaxed max-w-[340px] mb-8">
               India&apos;s trusted B2B partner for fresh fruits and vegetables.
               Direct sourcing, quality grading, pan-India cold chain delivery.
             </p>
@@ -72,7 +71,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3" aria-label="Contact information">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-green/60 mt-0.5 shrink-0" aria-hidden="true" />
-                <span className="font-body text-[0.8rem] text-white/45 leading-relaxed">
+                <span className="font-body text-[0.95rem] text-white/45 leading-relaxed">
                   4-138, Girnibavi, Narsampet,<br />
                   Warangal, Telangana — 506002
                 </span>
@@ -81,7 +80,7 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-green/60 shrink-0" aria-hidden="true" />
                 <a
                   href="tel:+918341167172"
-                  className="font-body text-[0.8rem] text-white/45 hover:text-green transition-colors"
+                  className="font-body text-[0.95rem] text-white/45 hover:text-green transition-colors"
                 >
                   +91 83411 67172
                 </a>
@@ -90,7 +89,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-green/60 shrink-0" aria-hidden="true" />
                 <a
                   href="mailto:kondutitraders93@gmail.com"
-                  className="font-body text-[0.8rem] text-white/45 hover:text-green transition-colors"
+                  className="font-body text-[0.95rem] text-white/45 hover:text-green transition-colors"
                 >
                   kondutitraders93@gmail.com
                 </a>
@@ -129,7 +128,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="font-body text-[0.82rem] text-white/45 hover:text-white/80 transition-colors leading-none"
+                      className="font-body text-[0.96rem] text-white/45 hover:text-white/80 transition-colors leading-none"
                     >
                       {link.label}
                     </Link>
@@ -146,7 +145,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="font-body text-[0.82rem] text-white/45 hover:text-white/80 transition-colors leading-none"
+                      className="font-body text-[0.96rem] text-white/45 hover:text-white/80 transition-colors leading-none"
                     >
                       {link.label}
                     </Link>
@@ -159,26 +158,24 @@ export default function Footer() {
             <div className="col-span-2 md:col-span-1">
               <h3 className="eyebrow text-white/30 mb-5">Industries</h3>
               <ul className="flex flex-col gap-3 mb-8" role="list">
-                {industryLinks.map(link => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="font-body text-[0.82rem] text-white/45 hover:text-white/80 transition-colors leading-none"
-                    >
-                      {link.label}
-                    </Link>
+                {industrySegments.map(segment => (
+                  <li
+                    key={segment}
+                    className="font-body text-[0.96rem] text-white/45 leading-none"
+                  >
+                    {segment}
                   </li>
                 ))}
               </ul>
 
               {/* Inline CTA */}
               <div className="p-4 rounded-xl border border-white/6 bg-white/3">
-                <p className="font-body text-[0.72rem] text-white/40 mb-3 leading-relaxed">
+                <p className="font-body text-[0.86rem] text-white/40 mb-3 leading-relaxed">
                   Ready to streamline your fresh produce sourcing?
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 font-body text-[0.78rem] font-semibold text-green hover:text-green-light transition-colors group"
+                  className="inline-flex items-center gap-1.5 font-body text-[0.92rem] font-semibold text-green hover:text-green-light transition-colors group"
                 >
                   Start sourcing
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
@@ -191,17 +188,17 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-[0.72rem] text-white/28">
+          <p className="font-body text-[0.86rem] text-white/28">
             © {new Date().getFullYear()} Konduti Traders Pvt. Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-5 flex-wrap justify-center">
-            <span className="font-body text-[0.72rem] text-white/22">GST: 27XXXXX0000X1ZX</span>
+            <span className="font-body text-[0.86rem] text-white/22">GST: 27XXXXX0000X1ZX</span>
             <span className="text-white/15" aria-hidden="true">·</span>
-            <Link href="/privacy" className="font-body text-[0.72rem] text-white/28 hover:text-white/55 transition-colors">
+            <Link href="/privacy" className="font-body text-[0.86rem] text-white/28 hover:text-white/55 transition-colors">
               Privacy
             </Link>
             <span className="text-white/15" aria-hidden="true">·</span>
-            <Link href="/terms" className="font-body text-[0.72rem] text-white/28 hover:text-white/55 transition-colors">
+            <Link href="/terms" className="font-body text-[0.86rem] text-white/28 hover:text-white/55 transition-colors">
               Terms
             </Link>
           </div>

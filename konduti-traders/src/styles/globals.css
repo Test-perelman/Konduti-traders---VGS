@@ -49,6 +49,7 @@
 }
 
 html {
+  font-size: clamp(17px, 0.25vw + 16px, 19px);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -59,7 +60,9 @@ body {
   color: var(--color-dark);
   font-family: var(--font-body);
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.72;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -110,13 +113,14 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  line-height: 1.04;
+  letter-spacing: -0.028em;
 }
 
 p {
   font-family: var(--font-body);
-  line-height: 1.75;
+  line-height: 1.85;
+  font-size: 1rem;
   color: #4a5a47;
 }
 
@@ -144,18 +148,18 @@ p {
 
 .eyebrow {
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-green);
 }
 
 .eyebrow-light {
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.6);
 }
