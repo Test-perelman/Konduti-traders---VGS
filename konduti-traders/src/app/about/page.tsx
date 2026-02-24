@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import CtaBanner from '@/components/home/CtaBanner'
+import FounderSection from '@/components/about/FounderSection'
+import TeamSection from '@/components/about/TeamSection'
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -48,7 +50,12 @@ const qualitySteps = [
 ]
 
 const team = [
-  { name: 'Vikram Konduti', role: 'Founder & Managing Director', bio: '18 years in fresh produce trade across India. Former APMC board member and FPO advisory committee lead.' },
+  {
+    name: 'Sridhar',
+    role: 'Founder & Managing Director',
+    bio: '18+ years in fresh produce trade across India. Former APMC board member and FPO advisory committee lead. Visionary in direct farm-to-business supply chains.',
+    image: '/gallery images/founder images/sridhar.jpg.jpeg'
+  },
   { name: 'Preethi Shankar', role: 'Head of Quality Assurance', bio: 'Post-graduate in Food Technology from CFTRI Mysore. 12 years in produce QA for export and domestic markets.' },
   { name: 'Arjun Mehta', role: 'Head of Logistics', bio: 'Supply chain specialist with experience building cold chain networks for two major Indian food companies.' },
   { name: 'Divya Nair', role: 'Key Accounts Manager', bio: 'B2B relationship management specialist. Primary contact for supermarket and HoReCa accounts.' },
@@ -284,45 +291,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Team ── */}
-      <section className="py-20 lg:py-28 bg-white" aria-labelledby="team-heading">
-        <div className="max-w-[1360px] mx-auto px-6 lg:px-12">
-          <div className="mb-12">
-            <span className="eyebrow text-green block mb-4">Our Team</span>
-            <h2
-              id="team-heading"
-              className="font-display font-light text-dark"
-              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
-            >
-              The people behind the supply.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {team.map(({ name, role, bio }) => (
-              <div
-                key={name}
-                className="bg-white rounded-2xl p-7 border border-stone-lighter shadow-premium-sm hover:shadow-premium-md card-hover-subtle"
-              >
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center mb-5 text-white font-display font-medium text-2xl"
-                  style={{ background: 'linear-gradient(135deg, #2c5f4a, #3d8b5e)' }}
-                  aria-hidden="true"
-                >
-                  {name.charAt(0)}
-                </div>
-                <h3
-                  className="font-display font-medium text-dark mb-0.5"
-                  style={{ fontSize: '1.1rem', letterSpacing: '-0.018em' }}
-                >
-                  {name}
-                </h3>
-                <p className="eyebrow text-green mb-3">{role}</p>
-                <p className="font-body text-stone" style={{ fontSize: '0.78rem', lineHeight: '1.75' }}>{bio}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FounderSection />
+      <TeamSection team={team} />
 
       <CtaBanner />
     </>
