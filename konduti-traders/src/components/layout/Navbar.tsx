@@ -59,7 +59,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center group flex-shrink-0"
+              className="flex items-center group flex-shrink-0 rounded-xl bg-white px-3 py-2 shadow-[0_4px_16px_rgba(0,0,0,0.12)]"
               aria-label="Konduti Traders — Home"
             >
               <Image
@@ -67,7 +67,7 @@ export default function Navbar() {
                 alt="Konduti Traders Logo"
                 width={280}
                 height={146}
-                className="w-auto h-[72px] md:h-[78px] lg:h-[84px] object-contain group-hover:opacity-85 transition-opacity"
+                className="w-auto h-[62px] md:h-[66px] lg:h-[70px] object-contain group-hover:opacity-90 transition-opacity"
                 priority
               />
             </Link>

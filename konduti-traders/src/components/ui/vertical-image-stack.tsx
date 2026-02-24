@@ -153,7 +153,7 @@ export function VerticalImageStack({
 
       {/* Counter */}
       {showCounter && (
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col items-center">
+        <div className="absolute -left-16 top-1/2 -translate-y-1/2 flex flex-col items-center">
           <span className="font-display font-light text-dark tabular-nums" style={{ fontSize: '2.5rem', letterSpacing: '-0.04em', lineHeight: 1 }}>
             {String(currentIndex + 1).padStart(2, '0')}
           </span>

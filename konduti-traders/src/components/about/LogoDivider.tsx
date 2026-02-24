@@ -17,9 +17,9 @@ export default function LogoDivider() {
           <Image
             src="/logo-full.png"
             alt="Konduti Traders"
-            width={100}
-            height={100}
-            className="w-20 h-20 object-contain"
+            width={300}
+            height={300}
+            className="w-60 h-60 object-contain"
           />
         </motion.div>
       </div>

@@ -25,15 +25,15 @@ const item = {
 export default function HeroSection() {
   return (
     <section
-      className="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center"
+      className="relative w-full min-h-[46vh] lg:min-h-[52vh] overflow-hidden flex flex-col items-center justify-center"
       aria-label="Konduti Traders — Farm-to-Business Fresh Produce"
     >
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
         style={{
-          filter: 'blur(0.3px) contrast(1.05) saturate(0.85) brightness(0.8)',
-          transform: 'scale(1.04)',
+          filter: 'contrast(1.02) saturate(0.9) brightness(0.86)',
+          transform: 'scale(1)',
           transformOrigin: 'center center',
         }}
         src="/animated-video.mp4"
@@ -80,7 +80,7 @@ export default function HeroSection() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-20 flex flex-col items-center text-center px-6 max-w-[1000px] mx-auto pt-28 pb-32"
+        className="relative z-20 flex flex-col items-center text-center px-6 max-w-[1000px] mx-auto pt-24 pb-20 lg:pt-28 lg:pb-24"
       >
 
         {/* Eyebrow */}
@@ -98,7 +98,7 @@ export default function HeroSection() {
           variants={item}
           className="font-display font-light text-white hero-text-glow max-w-[900px]"
           style={{
-            fontSize: 'clamp(3.2rem, 8.5vw, 7.2rem)',
+            fontSize: 'clamp(2.72rem, 7.23vw, 6.12rem)',
             lineHeight: '0.96',
             letterSpacing: '-0.04em',
           }}
@@ -116,7 +116,7 @@ export default function HeroSection() {
         <motion.div variants={item} className="mt-10 mb-12">
           <p
             className="hero-subtext-glow font-body text-white/70 text-center font-light"
-            style={{ fontSize: 'clamp(1.0rem, 2.2vw, 1.25rem)', letterSpacing: '0.03em', lineHeight: '1.8' }}
+            style={{ fontSize: 'clamp(0.85rem, 1.87vw, 1.06rem)', letterSpacing: '0.03em', lineHeight: '1.8' }}
           >
             Direct from farms.&ensp;·&ensp;No intermediaries.&ensp;·&ensp;No margin leakage.
           </p>
@@ -127,7 +127,7 @@ export default function HeroSection() {
           <Link
             href="/contact"
             className="group inline-flex items-center gap-2.5 bg-green text-white font-body font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_40px_rgba(61,139,94,0.35)] hover:shadow-[0_0_60px_rgba(61,139,94,0.55)] hover:bg-green-light magnetic-btn"
-            style={{ fontSize: '0.9rem', letterSpacing: '0.02em' }}
+            style={{ fontSize: '0.77rem', letterSpacing: '0.02em' }}
           >
             Start Sourcing
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform">
@@ -137,7 +137,7 @@ export default function HeroSection() {
           <Link
             href="/products"
             className="inline-flex items-center gap-2 bg-white/8 text-white font-body font-medium px-8 py-4 rounded-full border border-white/18 hover:bg-white/14 hover:border-white/30 transition-all duration-300 backdrop-blur-sm"
-            style={{ fontSize: '0.9rem', letterSpacing: '0.02em' }}
+            style={{ fontSize: '0.77rem', letterSpacing: '0.02em' }}
           >
             Explore Products
           </Link>
@@ -161,11 +161,11 @@ export default function HeroSection() {
               )}
               <span
                 className="font-display font-medium text-cream"
-                style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1, letterSpacing: '-0.04em' }}
+                style={{ fontSize: 'clamp(1.53rem, 2.98vw, 2.21rem)', lineHeight: 1, letterSpacing: '-0.04em' }}
               >
                 {value}
               </span>
-              <span className="font-body text-white/50" style={{ fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: '500' }}>
+              <span className="font-body text-white/50" style={{ fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: '500' }}>
                 {label}
               </span>
             </div>

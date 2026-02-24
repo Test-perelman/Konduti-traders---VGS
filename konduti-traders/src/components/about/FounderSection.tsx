@@ -19,7 +19,7 @@ export default function FounderSection() {
           >
             <Image
               src="/gallery images/founder images/founder_new.png"
-              alt="Sridhar, Founder & Managing Director"
+              alt="Sridhar, Founder and Managing Director"
               width={540}
               height={700}
               className="rounded-xl shadow-premium-lg w-full h-auto object-cover"
@@ -37,19 +37,22 @@ export default function FounderSection() {
             <span className="eyebrow text-green block mb-5">Meet the Founder</span>
             <h2
               id="founder-heading"
-              className="font-display font-light text-dark mb-6"
+              className="font-display font-light text-dark mb-4"
               style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', lineHeight: '1.08', letterSpacing: '-0.03em' }}
             >
               Sridhar
             </h2>
-            <p className="font-body text-gray-text leading-relaxed mb-6">
-              With over 18 years of hands-on experience in India's fresh produce trade, Sridhar has been instrumental in reshaping how B2B buyers and farmers connect.
+            <p className="font-body text-green font-semibold tracking-[0.04em] uppercase mb-6">
+              Founder and Managing Director
             </p>
             <p className="font-body text-gray-text leading-relaxed mb-6">
-              As a former APMC board member and lead advisor to farmer producer organizations (FPOs), he understands both sides of the supply chain—the pressures on farms and the exacting demands of commercial buyers.
+              Sridhar, Managing Director of Konduti Traders, has 5+ years of experience in the trading sector.
+            </p>
+            <p className="font-body text-gray-text leading-relaxed mb-6">
+              He is focused on quality sourcing, transparent business practices, and building long-term relationships with customers.
             </p>
             <p className="font-body text-gray-text leading-relaxed mb-8">
-              Konduti Traders was founded on his conviction that transparency, quality-first sourcing, and long-term partnerships can unlock growth for both small farmers and ambitious businesses.
+              His approach combines reliable execution with trust-based partnerships, helping Konduti Traders deliver consistent value to every client.
             </p>
             <Link
               href="/contact"

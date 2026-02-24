@@ -188,9 +188,23 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-[0.86rem] text-white/28">
-            © {new Date().getFullYear()} Konduti Traders Pvt. Ltd. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="font-body text-[0.86rem] text-white/28">
+              © {new Date().getFullYear()} Konduti Traders Pvt. Ltd. All rights reserved.
+            </p>
+            <span className="hidden sm:block text-white/15" aria-hidden="true">·</span>
+            <p className="font-body text-[0.86rem] text-white/28">
+              Developed by{' '}
+              <a
+                href="https://vetrioliglobalservices.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/45 hover:text-green transition-colors duration-200 underline underline-offset-2 decoration-white/20 hover:decoration-green"
+              >
+                Vetrioli Global Services
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-5 flex-wrap justify-center">
             <span className="font-body text-[0.86rem] text-white/22">GST: 27XXXXX0000X1ZX</span>
             <span className="text-white/15" aria-hidden="true">·</span>
