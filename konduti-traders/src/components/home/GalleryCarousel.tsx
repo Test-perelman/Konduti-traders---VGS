@@ -3,6 +3,20 @@
 import { motion } from 'framer-motion'
 import { ThreeDPhotoCarousel } from '@/components/ui/3d-carousel'
 
+const galleryImages = [
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.06 (1).jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.06.jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.07 (1).jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.07 (2).jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.07.jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.08 (1).jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.08 (2).jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.08.jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.09 (1).jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.09 (2).jpeg",
+  "/gallery images/gallery/WhatsApp Image 2026-02-24 at 17.18.09.jpeg",
+].map((p) => encodeURI(p))
+
 export default function GalleryCarousel() {
   return (
     <section className="py-20 lg:py-28 bg-mint overflow-hidden" aria-labelledby="gallery-heading">
@@ -35,7 +49,7 @@ export default function GalleryCarousel() {
           className="flex justify-center"
         >
           <div className="w-full">
-            <ThreeDPhotoCarousel />
+            <ThreeDPhotoCarousel images={galleryImages} bgColor="bg-mint" />
           </div>
         </motion.div>
       </div>

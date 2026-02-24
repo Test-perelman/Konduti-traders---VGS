@@ -55,25 +55,28 @@ export function useMediaQuery(
   return matches
 }
 
-const galleryImageFiles = [
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.06 (1).jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.06.jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.07 (1).jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.07 (2).jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.07.jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.08 (1).jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.08 (2).jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.08.jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.09 (1).jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.09 (2).jpeg",
-  "gallery/WhatsApp Image 2026-02-24 at 17.18.09.jpeg",
-  "founder images/sridhar.jpg.jpeg",
-  "/logo-full.png",
+const galleryImagePaths = [
+  "/images/products/dry-red-chilli.jpg",
+  "/images/products/turmeric.jpg",
+  "/images/products/black-pepper.jpg",
+  "/images/products/cardamom.jpg",
+  "/images/products/cumin.jpg",
+  "/images/products/cinnamon.png",
+  "/images/products/maize.jpg",
+  "/images/products/rice.jpg",
+  "/images/products/wheat.jpg",
+  "/images/products/cashew-nuts.jpg",
+  "/images/products/peanuts.jpg",
+  "/images/products/mango.png",
+  "/images/products/apple.png",
+  "/images/products/watermelon.png",
+  "/images/products/pomegranate.png",
+  "/images/products/tomato.png",
+  "/images/products/onion.png",
+  "/images/products/carrot.png",
+  "/images/products/coffee.jpg",
+  "/images/products/dehydrated-onion.png",
 ]
-
-const galleryImagePaths = galleryImageFiles.map((file) =>
-  encodeURI(file.startsWith("/") ? file : `/gallery images/${file}`)
-)
 
 const duration = 0.15
 const transition = { duration, ease: [0.32, 0.72, 0, 1] as const }
@@ -83,10 +86,12 @@ const Carousel = memo(
     controls,
     cards,
     isCarouselActive,
+    bgColor = "bg-mint",
   }: {
     controls: ReturnType<typeof useAnimation>
     cards: string[]
     isCarouselActive: boolean
+    bgColor?: string
   }) => {
     const isScreenSizeSm = useMediaQuery("(max-width: 640px)")
     const cylinderWidth = isScreenSizeSm ? 2250 : 3750
@@ -101,7 +106,7 @@ const Carousel = memo(
 
     return (
       <div
-        className="flex h-full items-center justify-center bg-teal-dark"
+        className={`flex h-full items-center justify-center ${bgColor}`}
         style={{
           perspective: "1200px",
           transformStyle: "preserve-3d",
@@ -138,7 +143,7 @@ const Carousel = memo(
           {cards.map((imgUrl, i) => (
             <motion.div
               key={`key-${imgUrl}-${i}`}
-              className="absolute flex h-full origin-center items-center justify-center rounded-xl bg-teal-dark p-3"
+              className={`absolute flex h-full origin-center items-center justify-center rounded-xl ${bgColor} p-3`}
               style={{
                 width: `${faceWidth}px`,
                 transform: `rotateY(${
@@ -164,9 +169,9 @@ const Carousel = memo(
 )
 Carousel.displayName = "Carousel"
 
-function ThreeDPhotoCarousel() {
+function ThreeDPhotoCarousel({ images, bgColor }: { images?: string[], bgColor?: string }) {
   const controls = useAnimation()
-  const cards = useMemo(() => galleryImagePaths, [])
+  const cards = useMemo(() => images ?? galleryImagePaths, [images])
 
   return (
     <div className="relative h-[560px] md:h-[700px] w-full overflow-hidden">
@@ -174,6 +179,7 @@ function ThreeDPhotoCarousel() {
         controls={controls}
         cards={cards}
         isCarouselActive={true}
+        bgColor={bgColor}
       />
     </div>
   )

@@ -117,7 +117,7 @@ export default function ProductCategories() {
           {/* Featured — vertical image stack */}
           <motion.div variants={fadeUp} className="lg:col-span-5 flex flex-col items-center">
             {/* Editorial label above */}
-            <div className="w-full mb-5 pl-2">
+            <div className="relative z-10 w-full mb-14 pl-2">
               <span className="eyebrow text-stone text-xs font-semibold tracking-[0.14em]">Drag or scroll to explore</span>
             </div>
 

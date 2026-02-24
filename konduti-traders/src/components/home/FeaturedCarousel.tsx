@@ -20,7 +20,7 @@ export default function FeaturedCarousel() {
         </div>
 
         {/* 3D Carousel */}
-        <ThreeDPhotoCarousel />
+        <ThreeDPhotoCarousel bgColor="bg-teal-dark" />
       </div>
     </section>
   )
