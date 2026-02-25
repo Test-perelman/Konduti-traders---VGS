@@ -75,7 +75,7 @@ const galleryImagePaths = [
   "/images/products/onion.png",
   "/images/products/carrot.png",
   "/images/products/coffee.jpg",
-  "/images/products/dehydrated-onion.png",
+  "/images/products/dehydrated-ginger.png",
 ]
 
 const duration = 0.15
